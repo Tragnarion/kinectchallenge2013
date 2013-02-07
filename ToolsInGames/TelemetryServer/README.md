@@ -9,5 +9,19 @@ The communication with the server is meant to be made using JSON-RPC 2.0 [1]:
     --> {"jsonrpc": "2.0", "method": "methodName", "params": [42, 23], "id": 1}
     <-- {"jsonrpc": "2.0", "result": 19, "id": 1}
 
+## API
+
+### addGameplayEvent
+
+Add a single event to the telemetry system.
+
+    {"jsonrpc": "2.0", "method": "addGameplayEvent", "params": "", "id": 1}
+
+### addBatchedGameplayEvent
+
+Add a batched event containing a collection of events to the telemetry system.
+
+    {"jsonrpc": "2.0", "method": "addBatchedGameplayEvent", "params": "", "id": 1}
+
 # Refernces
  - [1] JSON-RPC 2.0: http://www.jsonrpc.org/specification
