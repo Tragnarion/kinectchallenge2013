@@ -26,7 +26,7 @@ Add a single event to the telemetry system.
 
 Add a batched event containing a collection of events to the telemetry system.
 
-    {"jsonrpc": "2.0", "method": "addBatchedGameplayEvent", "params": {"type":1, "data": [{}]}, "id": 1}
+    {"jsonrpc": "2.0", "method": "addBatchedGameplayEvent", "params": {"type":1, "tag":"playername", "data": [{}]}, "id": 1}
 
  * params: JSON input parameter object
  * type: integer used to specify the event type
