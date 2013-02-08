@@ -15,13 +15,23 @@ The communication with the server is meant to be made using JSON-RPC 2.0 [1]:
 
 Add a single event to the telemetry system.
 
-    {"jsonrpc": "2.0", "method": "addGameplayEvent", "params": "", "id": 1}
+    {"jsonrpc": "2.0", "method": "addGameplayEvent", "params": {"type":1, "tag":"playername", "data": {}}, "id": 1}
+
+ * params: JSON input parameter object
+ * type: integer used to specify the event type
+ * tag: String tag, can be used to group events using a string such as the player name, etc...
+ * data: JSON object that represents the event data. Each event can handle it's own data
 
 ### addBatchedGameplayEvent
 
 Add a batched event containing a collection of events to the telemetry system.
 
-    {"jsonrpc": "2.0", "method": "addBatchedGameplayEvent", "params": "", "id": 1}
+    {"jsonrpc": "2.0", "method": "addBatchedGameplayEvent", "params": {"type":1, "data": [{}]}, "id": 1}
+
+ * params: JSON input parameter object
+ * type: integer used to specify the event type
+ * tag: String tag, can be used to group events using a string such as the player name, etc...
+ * data: Array of JSON objects that represents the event data. Each event can handle it's own data
 
 # Refernces
  - [1] JSON-RPC 2.0: http://www.jsonrpc.org/specification
