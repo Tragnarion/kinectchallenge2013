@@ -12,7 +12,9 @@ class index:
 
 class api:
     def POST(self):
-        return "aaaa"
+        data = web.data() # you can get data use this method
+
+        return data
 
     def GET(self):
         return "Telemetry Server - https://github.com/Tragnarion/kinectchallenge2013/tree/master/ToolsInGames/TelemetryServer"

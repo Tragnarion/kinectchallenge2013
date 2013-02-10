@@ -15,7 +15,6 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 using Microsoft.Xna.Framework.Input.Touch;
 
-
 namespace Platformer
 {
     /// <summary>
@@ -48,6 +47,8 @@ namespace Platformer
         private KeyboardState keyboardState;
         private TouchCollection touchState;
         private AccelerometerState accelerometerState;
+
+        public TelemetryProxy telemetryProxy;
         
         // The number of levels in the Levels directory of our content. We assume that
         // levels in our content are 0-based and that all numbers under this constant
@@ -59,6 +60,9 @@ namespace Platformer
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+
+            telemetryProxy = new TelemetryProxy(this, "http://127.0.0.1:8080/api");
+            telemetryProxy.addGameplayEvent();
 
 #if WINDOWS_PHONE
             graphics.IsFullScreen = true;
