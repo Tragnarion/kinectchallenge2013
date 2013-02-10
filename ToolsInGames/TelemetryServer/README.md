@@ -9,6 +9,8 @@ The communication with the server is meant to be made using JSON-RPC 2.0 [1]:
     --> {"jsonrpc": "2.0", "method": "methodName", "params": [42, 23], "id": 1}
     <-- {"jsonrpc": "2.0", "result": 19, "id": 1}
 
+Each call a client initiates should set the method that will be performed, a list of parameters and an id which will be returned by the server with the restult.
+
 To be able to run the server you need:
 
  * Python 2.7 [2]
@@ -32,8 +34,10 @@ Request:
             "type": 1, 
             "tag": "playername", 
             "loc": "location", 
-            "timestamp": 12569537329,
-            "data": { }
+            "data": {
+                "timestamp": 12569537329,
+                "content": "[The content goes here...]"
+            }
         },
         "id": 1
     }
@@ -42,8 +46,9 @@ Request:
   * type: Integer used to specify the event type
   * tag: String tag, can be used to group events using a string such as the player name, ...
   * loc: Location string, can be used to represent a level or a checkpoint, ...
-  * timestamp: Time when the event occured, used for time progression within a collection of events
- * data: JSON object that represents the event data. Each event can handle it's own data
+  * data: JSON object that represents the event data. Each event can handle it's own data
+   * timestamp: Time when the event occured, used for time progression within a collection of events
+   * content: The content of the event itself
 
 Response:
 
@@ -57,12 +62,31 @@ Add a batched event containing a collection of events to the telemetry system.
 
 Request:
 
-    {"jsonrpc": "2.0", "method": "addBatchedGameplayEvent", "params": {"type":1, "tag":"playername", "data": [{}]}, "id": 1}
+    {
+        "jsonrpc": "2.0", 
+        "method": "addBatchedGameplayEvent", 
+        "params": {
+            "type": 1, 
+            "tag": "playername",
+            "loc": "location", 
+            "data": 
+            [
+                {
+                    "timestamp": 12569537329,
+                    "content": "[The content goes here...]"
+                }
+            ]
+        }, 
+        "id": 1
+    }
 
  * params: JSON input parameter object
- * type: Integer used to specify the event type
- * tag: String tag, can be used to group events using a string such as the player name, etc...
- * data: Array of JSON objects that represents the event data. Each event can handle it's own data
+  * type: Integer used to specify the event type
+  * tag: String tag, can be used to group events using a string such as the player name, ...
+  * loc: Location string, can be used to represent a level or a checkpoint, ...
+  * data: Array of JSON objects that represents the event data. Each event can handle it's own data
+   * timestamp: Time when the event occured, used for time progression within a collection of events
+   * content: The content of the event itself
 
 Response:
 
@@ -76,17 +100,26 @@ Gets a given collection of gameplay events that has been submitted before.
 
 Request:
 
-    {"jsonrpc": "2.0", "method": "getGameplayEvent", "params": {"type":1, "tag":"playername", "id": 1}
+    {
+        "jsonrpc": "2.0", 
+        "method": "getGameplayEvent", 
+        "params": 
+        {
+            "type": 1, 
+            "tag": "playername"
+        },
+        "id": 1
+    }
 
  * params: JSON input parameter object
- * type: Integer used to specify the event type
- * tag: String tag, can be used to group events using a string such as the player name, etc...
+  * type: Integer used to specify the event type
+  * tag: String tag, can be used to group events using a string such as the player name, etc...
 
 Response:
 
     {"jsonrpc": "2.0", "result": [{}], "id": 1}
 
- * result: Returns a list of gameplay events that has been submitted earlier
+ * result: Returns a list of gameplay events that has been submitted earlier. The format is identical to the list of data sumbitted in 'addBatchedGameplayEvent'.
 
 # Refernces
  - [1] JSON-RPC 2.0: http://www.jsonrpc.org/specification
