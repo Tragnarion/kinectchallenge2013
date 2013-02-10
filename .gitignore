@@ -94,6 +94,7 @@ AppPackages/
 TestResults
 [Tt]est[Rr]esult*
 *.Cache
+*.CacheFile
 ClientBin
 [Ss]tyle[Cc]op.*
 ~$*
