@@ -25,11 +25,24 @@ Add a single event to the telemetry system.
 
 Request:
 
-    {"jsonrpc": "2.0", "method": "addGameplayEvent", "params": {"type":1, "tag":"playername", "data": {}}, "id": 1}
+    {
+        "jsonrpc": "2.0", 
+        "method": "addGameplayEvent", 
+        "params": {
+            "type": 1, 
+            "tag": "playername", 
+            "loc": "location", 
+            "timestamp": 12569537329,
+            "data": { }
+        },
+        "id": 1
+    }
 
  * params: JSON input parameter object
- * type: Integer used to specify the event type
- * tag: String tag, can be used to group events using a string such as the player name, etc...
+  * type: Integer used to specify the event type
+  * tag: String tag, can be used to group events using a string such as the player name, ...
+  * loc: Location string, can be used to represent a level or a checkpoint, ...
+  * timestamp: Time when the event occured, used for time progression within a collection of events
  * data: JSON object that represents the event data. Each event can handle it's own data
 
 Response:
