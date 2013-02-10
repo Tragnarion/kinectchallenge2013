@@ -16,13 +16,7 @@ namespace Platformer
         private Microsoft.Xna.Framework.Game game;
         private String serverURL;
 
-        enum EventType
-        { 
-            Kill,
-            Death,
-            LevelStart,
-            LevelEnd
-        };
+        
 
         public TelemetryProxy(Microsoft.Xna.Framework.Game game, String serverURL)
         {
@@ -33,25 +27,15 @@ namespace Platformer
         /// <summary>
         /// Push a given gameplay event to the telemetry server
         /// </summary>
-        public void addGameplayEvent(EventType eventType, String tag, String location, int timestamp, String content)
+        public void AddGameplayEvent(TelemetryEvent telemetryEvent)
         {
-            sendRequest(
-                "{\"jsonrpc\": \"2.0\"," +
-                "\"method\": \"addGameplayEvent\"," +
-                "\"params\": {" +
-                    "\"type\": 1," +
-                    "\"tag\": \"playername\"," +
-                    "\"loc\": \"location\"," +
-                    "\"data\": {" +
-                        "\"timestamp\": 12569537329," +
-                        "\"content\": \"[The content goes here...]" +
-                    "}" +
-                "}," +
-                "\"id\": 1}");
+            SendRequest(telemetryEvent.ToJSON());
         }
 
-
-        private void sendRequest(String postData)
+        /// <summary>
+        /// Send a plain post request to the server
+        /// </summary>
+        private void SendRequest(String postData)
         {
             // Create a request using a URL that can receive a post. 
             WebRequest request = WebRequest.Create(this.serverURL);
