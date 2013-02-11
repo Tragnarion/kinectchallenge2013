@@ -62,7 +62,7 @@ namespace Platformer
             Content.RootDirectory = "Content";
 
             telemetryProxy = new TelemetryProxy(this, "http://127.0.0.1:8080/api");
-            telemetryProxy.addGameplayEvent();
+            //telemetryProxy.addGameplayEvent();
 
 #if WINDOWS_PHONE
             graphics.IsFullScreen = true;

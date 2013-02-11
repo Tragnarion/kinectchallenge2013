@@ -73,6 +73,8 @@
     <Compile Include="Animation.cs" />
     <Compile Include="AnimationPlayer.cs" />
     <Compile Include="Circle.cs" />
+    <Compile Include="JSONObject.cs" />
+    <Compile Include="Nullable.cs" />
     <Compile Include="TelemetryEvent.cs" />
     <Compile Include="TelemetryProxy.cs" />
     <Compile Include="Enemy.cs" />
