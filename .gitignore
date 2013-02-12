@@ -2,6 +2,9 @@
 [Bb]in/
 [Oo]bj/
 
+# Compiled python files
+*.pyc
+
 # mstest test results
 TestResults
 
