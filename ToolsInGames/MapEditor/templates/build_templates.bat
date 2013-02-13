@@ -1,1 +1,0 @@
-pyside-uic MapEditor.ui -o ../ui/main.py
