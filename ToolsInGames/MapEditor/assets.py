@@ -28,6 +28,7 @@ class AssetManager():
         self._baseDir = baseDir
         self._assetDict = {}
         self._assetBasePath = os.path.join(self._baseDir,"assets")
+        self._tilesBasePath = os.path.join(self._assetBasePath,"tiles")
         
         # This should come from a plugin subsystem... but for now it's ok
         self._assetLoaders = {
@@ -36,6 +37,11 @@ class AssetManager():
         self._assetUnloaders = {
                 'PNG': self._unloadPNG,
             }
+
+        # Load all tiles in
+        for tile in os.listdir(self._tilesBasePath):
+            self.load_asset("tiles/%s"%tile)
+        
     
     # ------------------------------------------------------------------
     # Create a real asset
