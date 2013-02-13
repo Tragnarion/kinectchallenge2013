@@ -8,18 +8,25 @@ import os
 from PySide import QtGui, QtCore
 from ui.main import Ui_MapEditor
 from assets import AssetManager
+from elements import *
 
 import utils
 
 WORKING_DIR = os.getcwd()
 
-class GraphicsScene(QtGui.QGraphicsScene):
+class EditorScene(QtGui.QGraphicsScene):
     def __init__(self, parent=None):
-        super(GraphicsScene, self).__init__(parent)
+        super(EditorScene, self).__init__(parent)
     
     def paint(self, painter, option, widget):
         painter.setPen(QtCore.Qt.NoPen)
         painter.setBrush(QtCore.Qt.darkGray)
+
+    # TODO: Add methods to add an block and then create empty blocks near them.
+    #       Adding a block should be done by a mouse-click selecting a tool
+    #       from the tools pane on the left. The idea is to maintain always
+    #       a rectangle of blocks. An empty base block represents a hole in the
+    #       map where the player will explode!
         
 class GraphicsView(QtGui.QGraphicsView):
     def __init__(self, parent=None, gbcolor=QtGui.QColor('#CCCCCC'), space=10):
@@ -53,44 +60,6 @@ class GraphicsView(QtGui.QGraphicsView):
             xPos += self.space
             iteration += 1
 
-class BlockRenderer(QtGui.QGraphicsItem):
-    def __init__(self, mainWindow, canvas, x, y, asset=None, xl=40, yl=32):
-        QtGui.QGraphicsItem.__init__(self)
-
-        # The QMainWindow
-        self.mainWindow=mainWindow
-
-        # The QGraphicsView
-        self.canvas=canvas
-
-        # Set size and position of the item
-        self.x=x
-        self.y=y
-        self.xl=xl
-        self.yl=yl
-
-        # Used asset :D
-        self.asset=asset
-
-        # Define th size of the item
-        self._rect=QtCore.QRectF(QtCore.QPoint(self.x*self.xl, -self.y*self.yl), QtCore.QSize(self.xl, self.yl))
-
-    def boundingRect(self):
-        return self._rect
-
-    def paint(self, painter, option, widget):
-        # Save painter state
-        painter.save();
-
-        if self.asset == None:
-            painter.drawText(self._rect, QtCore.Qt.AlignCenter, "(%d,%d)"%(self.x,self.y))
-            painter.drawRect(self._rect)
-        else:
-            painter.drawImage(self._rect, self.asset)
-
-        # Restore painter state
-        painter.restore();
-
 class MapEditor(QtGui.QMainWindow, Ui_MapEditor):
     def __init__(self, parent=None):
         super(MapEditor, self).__init__(parent)
@@ -109,17 +78,17 @@ class MapEditor(QtGui.QMainWindow, Ui_MapEditor):
         #    self.assetManager.load_asset(os.path.join(self.tilesDir,tile)
 
         # Create the canvas :D
-        self.scene = GraphicsScene()  
+        self.scene = EditorScene()  
         self.graphicsView = GraphicsView(self.scene)
         self.graphicsView.setObjectName("graphicsView")
         self.horizontalLayout.addWidget(self.graphicsView)
 
         # Add the level renderer
         self.scene.addItem(BlockRenderer(self, self.graphicsView,0,0,self.assetManager.get_asset("tiles/BlockA0.png")))
-        self.scene.addItem(BlockRenderer(self, self.graphicsView,1,0))
-        self.scene.addItem(BlockRenderer(self, self.graphicsView,2,0))
-        self.scene.addItem(BlockRenderer(self, self.graphicsView,3,0))
-        self.scene.addItem(BlockRenderer(self, self.graphicsView,4,0))
+        self.scene.addItem(BlockRenderer(self, self.graphicsView,1,0,self.assetManager.get_asset("tiles/BlockA2.png")))
+        self.scene.addItem(BlockRenderer(self, self.graphicsView,2,0,self.assetManager.get_asset("tiles/BlockA1.png")))
+        self.scene.addItem(BlockRenderer(self, self.graphicsView,3,0,self.assetManager.get_asset("tiles/BlockA4.png")))
+        self.scene.addItem(BlockRenderer(self, self.graphicsView,4,0,self.assetManager.get_asset("tiles/BlockA5.png")))
 
         self.scene.addItem(BlockRenderer(self, self.graphicsView,0,1))
         self.scene.addItem(BlockRenderer(self, self.graphicsView,1,1))
@@ -129,8 +98,8 @@ class MapEditor(QtGui.QMainWindow, Ui_MapEditor):
 
         self.scene.addItem(BlockRenderer(self, self.graphicsView,0,2))
         self.scene.addItem(BlockRenderer(self, self.graphicsView,1,2))
-        self.scene.addItem(BlockRenderer(self, self.graphicsView,2,2))
-        self.scene.addItem(BlockRenderer(self, self.graphicsView,3,2))
+        self.scene.addItem(BlockRenderer(self, self.graphicsView,2,2,self.assetManager.get_asset("tiles/Platform.png")))
+        self.scene.addItem(BlockRenderer(self, self.graphicsView,3,2,self.assetManager.get_asset("tiles/Platform.png")))
         self.scene.addItem(BlockRenderer(self, self.graphicsView,4,2))
 
 def main(vargs):
