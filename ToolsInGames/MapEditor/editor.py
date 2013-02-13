@@ -72,11 +72,6 @@ class MapEditor(QtGui.QMainWindow, Ui_MapEditor):
         # Create our asset manager
         self.assetManager = AssetManager(WORKING_DIR)
 
-        # Load all tiles in
-        #self.tilesDir=os.path.join(WORKING_DIR,'assets','tiles')
-        #for tile in os.listdir(self._tilesDir):
-        #    self.assetManager.load_asset(os.path.join(self.tilesDir,tile)
-
         # Create the canvas :D
         self.scene = EditorScene()  
         self.graphicsView = GraphicsView(self.scene)
@@ -84,23 +79,23 @@ class MapEditor(QtGui.QMainWindow, Ui_MapEditor):
         self.horizontalLayout.addWidget(self.graphicsView)
 
         # Add the level renderer
-        self.scene.addItem(BlockRenderer(self, self.graphicsView,0,0,self.assetManager.get_asset("tiles/BlockA0.png")))
-        self.scene.addItem(BlockRenderer(self, self.graphicsView,1,0,self.assetManager.get_asset("tiles/BlockA2.png")))
-        self.scene.addItem(BlockRenderer(self, self.graphicsView,2,0,self.assetManager.get_asset("tiles/BlockA1.png")))
-        self.scene.addItem(BlockRenderer(self, self.graphicsView,3,0,self.assetManager.get_asset("tiles/BlockA4.png")))
-        self.scene.addItem(BlockRenderer(self, self.graphicsView,4,0,self.assetManager.get_asset("tiles/BlockA5.png")))
+        self.scene.addItem(Actor(self,0,0))
+        self.scene.addItem(BlockB(self,1,0))
+        self.scene.addItem(BlockA(self,2,0))
+        self.scene.addItem(BlockA(self,3,0))
+        self.scene.addItem(BlockB(self,4,0))
 
-        self.scene.addItem(BlockRenderer(self, self.graphicsView,0,1))
-        self.scene.addItem(BlockRenderer(self, self.graphicsView,1,1))
-        self.scene.addItem(BlockRenderer(self, self.graphicsView,2,1))
-        self.scene.addItem(BlockRenderer(self, self.graphicsView,3,1))
-        self.scene.addItem(BlockRenderer(self, self.graphicsView,4,1))
+        #self.scene.addItem(BlockRenderer(self,0,1))
+        self.scene.addItem(BlockRenderer(self,1,1))
+        self.scene.addItem(BlockRenderer(self,2,1))
+        self.scene.addItem(BlockRenderer(self,3,1))
+        self.scene.addItem(Actor(self,4,1))
 
-        self.scene.addItem(BlockRenderer(self, self.graphicsView,0,2))
-        self.scene.addItem(BlockRenderer(self, self.graphicsView,1,2))
-        self.scene.addItem(BlockRenderer(self, self.graphicsView,2,2,self.assetManager.get_asset("tiles/Platform.png")))
-        self.scene.addItem(BlockRenderer(self, self.graphicsView,3,2,self.assetManager.get_asset("tiles/Platform.png")))
-        self.scene.addItem(BlockRenderer(self, self.graphicsView,4,2))
+        self.scene.addItem(BlockRenderer(self,0,2))
+        self.scene.addItem(BlockRenderer(self,1,2))
+        self.scene.addItem(Platform(self,2,2))
+        self.scene.addItem(Platform(self,3,2))
+        #self.scene.addItem(BlockRenderer(self,4,2))
 
 def main(vargs):
     app = QtGui.QApplication(sys.argv)

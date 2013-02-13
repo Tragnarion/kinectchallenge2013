@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 
+import random
+
 # Import UI subsystem
 from PySide import QtGui, QtCore
 
@@ -9,16 +11,16 @@ BLOCK_SIZE_Y=32
 
 class BlockRenderer(QtGui.QGraphicsItem):
     """
-    Base block renderer, all items inherit from this one
+    Base class used to render a section of the game grid
     """
-    def __init__(self, mainWindow, canvas, x, y, asset=None, xspan=1, yspan=1):
+    def __init__(self, mainWindow, x, y, asset=None, xspan=1, yspan=1):
         QtGui.QGraphicsItem.__init__(self)
 
         # The QMainWindow
         self.mainWindow=mainWindow
 
         # The QGraphicsView
-        self.canvas=canvas
+        self.canvas=mainWindow.graphicsView
 
         self.gbcolor=QtGui.QColor(255, 0, 0, 128)
 
@@ -34,8 +36,8 @@ class BlockRenderer(QtGui.QGraphicsItem):
         self.asset=asset
 
         # Define th size of the item
-        self._rect=QtCore.QRectF(QtCore.QPoint(self.x*self.xl, -self.y*self.yl), QtCore.QSize(self.xl, self.yl))
-        self._rect.translate(QtCore.QPointF(0,self.yl))
+        self._rect=QtCore.QRectF(QtCore.QPoint(0, 0), QtCore.QSize(self.xl, self.yl))
+        self._rect.moveCenter(QtCore.QPointF(self.x*BLOCK_SIZE_X+(xspan-1)*BLOCK_SIZE_X*0.5, -self.y*BLOCK_SIZE_Y+(yspan-1)*BLOCK_SIZE_Y*0.5))
 
         # Enable hoover and mouse events
         self.is_hoover=False
@@ -63,7 +65,7 @@ class BlockRenderer(QtGui.QGraphicsItem):
 
         # Draw the hoover graphic. Should represent the action on for the next click
         if self.is_hoover:
-            painter.fillRect(self._rect.left(), self._rect.top(), BLOCK_SIZE_X, BLOCK_SIZE_Y, self.gbcolor)
+            painter.fillRect(self._rect.left(), self._rect.top(), self.xl, self.yl, self.gbcolor)
             #painter.drawText(self._rect, QtCore.Qt.AlignCenter, "AA")
 
         # Restore painter state
@@ -76,3 +78,54 @@ class BlockRenderer(QtGui.QGraphicsItem):
     def hoverLeaveEvent(self, event):
         self.is_hoover=False
         self.scene().update()
+
+class BaseBlock(BlockRenderer):
+    """
+    Base block renderer, all items inherit from this one
+    """
+    def __init__(self, mainWindow, x, y, xspan=1, yspan=1):
+        BlockRenderer.__init__(self, mainWindow, x, y, self._get_asset(mainWindow), xspan, yspan)
+
+    def _get_asset(self, mainWindow):
+        return mainWindow.assetManager.get_asset(self._get_asset_base_name());
+
+    def _get_asset_base_name(self):
+        return ""
+
+class BlockA(BaseBlock):
+    """
+    Block of type A. Uses random assets.
+    """
+    def _get_asset_base_name(self):
+        return "tiles/BlockA%d.png"%(random.randint(0, 6));
+
+class BlockB(BaseBlock):
+    """
+    Block of type B. Uses random assets.
+    """
+    def _get_asset_base_name(self):
+        return "tiles/BlockB%d.png"%(random.randint(0, 1));
+
+class Platform(BaseBlock):
+    """
+    A platform block
+    """
+    def _get_asset_base_name(self):
+        return "tiles/Platform.png";
+
+class Exit(BaseBlock):
+    """
+    The exit block
+    """
+    def _get_asset_base_name(self):
+        return "tiles/Exit.png";
+
+class Actor(BaseBlock):
+    """
+    Base actor block, a player or a monster for example
+    """
+    def __init__(self, mainWindow, x, y, xspan=1, yspan=2):
+        BaseBlock.__init__(self, mainWindow, x, y, xspan, yspan)
+
+    def _get_asset_base_name(self):
+        return "tiles/MonsterA.png";
