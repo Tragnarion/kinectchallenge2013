@@ -36,8 +36,8 @@ class GraphicsView(QtGui.QGraphicsView):
         self.space = space
         self.background = None
         
-        # This fixes the scroll issue but the bounding is not correct
-        #self.setViewportUpdateMode(QtGui.QGraphicsView.FullViewportUpdate)
+        # Full update
+        self.setViewportUpdateMode(QtGui.QGraphicsView.FullViewportUpdate)
     
     def resizeEvent(self, event):
         QtGui.QGraphicsView.resizeEvent(self,event)
@@ -79,13 +79,13 @@ class MapEditor(QtGui.QMainWindow, Ui_MapEditor):
         self.horizontalLayout.addWidget(self.graphicsView)
 
         # Add the level renderer
-        self.scene.addItem(Actor(self,0,0))
+        self.scene.addItem(BlockA(self,0,0))
         self.scene.addItem(BlockB(self,1,0))
         self.scene.addItem(BlockA(self,2,0))
         self.scene.addItem(BlockA(self,3,0))
         self.scene.addItem(BlockB(self,4,0))
 
-        #self.scene.addItem(BlockRenderer(self,0,1))
+        self.scene.addItem(BlockRenderer(self,0,1))
         self.scene.addItem(BlockRenderer(self,1,1))
         self.scene.addItem(BlockRenderer(self,2,1))
         self.scene.addItem(BlockRenderer(self,3,1))
