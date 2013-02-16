@@ -39,33 +39,70 @@ class EditorScene(QtGui.QGraphicsScene):
         painter.setPen(QtCore.Qt.NoPen)
         painter.setBrush(QtCore.Qt.darkGray)
 
-    def _get_index(self,x,y):
-        return y*self.scene_width+x
-
-    def _from_index_x(self,index):
-        return index-(y*self.scene_width)
-
-    def _from_index_y(self,index):
-        return (index-x)/float(self.scene_width)
+    def _get_index(self,x,y,width):
+        return y*width+x
     
     def valid_pos(self, x, y):
-        index=self._get_index(x,y)
+        index=self._get_index(x,y,self.scene_width)
         if self.scene_matrix_length > 0 and index < self.scene_matrix_length:
             return index
         return INDEX_NONE
 
+    def get_element(self, x, y):
+        index = self.valid_pos(x,y)
+        if index != INDEX_NONE:
+            return self.scene_matrix[index]
+        return None
+
     def add_element(self, element, x, y):
-        # Look if the index does exists for the given item
-        # if so just add/replace the existing block with it
+        """
+        Look if the index does exists for the given item
+        if so just add/replace the existing block with it
+        """
         index = self.valid_pos(x,y)
         if index != INDEX_NONE:
             # Add the element at the given position
-            self.scene_matrix[0]=element
+            self.scene_matrix[index]=element
             self.addItem(element)
+
+    def add_row(self):
+        self._recreate_scene(self.scene_width,self.scene_height+1)
+
+    def add_col(self):
+        self._recreate_scene(self.scene_width+1,self.scene_height)
+
+    def remove_row(self, y):
+        # Remove all items from the scene and null the scene ref
+        for i in range(0,self.scene_width):
+            index = self._get_index(i, y, self.scene_width)
+            self.removeItem(self.scene_matrix[index])
+            self.scene_matrix[index]=None
+        self._clean_null_elements()
+
+    def remove_col(self, x):
+        """
+        Remove all items from the scene and null the scene ref
+        """
+        for i in range(0,self.scene_height):
+            index = self._get_index(x, i, self.scene_width)
+            self.removeItem(self.scene_matrix[index])
+            self.scene_matrix[index]=None
+        self._clean_null_elements()
+
+    def _clean_null_elements(self):
+        """
+        Remove all items from the scene matrix iterating from 
+        the end of the list removing None entries
+        """
+        for element in reversed(self.scene_matrix):
+            self.scene_matrix.remove(element)
+        self.scene_matrix_length=len(self.scene_matrix)
 
     def _recreate_scene(self,new_width=0,new_height=0):
         # Recreate the scene and rebuild items
         bInitialize=False
+        old_width=self.scene_width
+        old_height=self.scene_height
         if new_width == 0 and new_height == 0:
             self.scene_height=1
             self.scene_width=1
@@ -83,15 +120,19 @@ class EditorScene(QtGui.QGraphicsScene):
             # just add an empty block
             self.add_element(elements.EMPTY_BLOCK(self.main_window,0,0),0,0)
         else:
-            # Add blocks from the old scebe matrix and fill any empty
-            # spot with empty blocks
-            pass
-
-    # TODO: Add methods to add an block and then create empty blocks near them.
-    #       Adding a block should be done by a mouse-click selecting a tool
-    #       from the tools pane on the left. The idea is to maintain always
-    #       a rectangle of blocks. An empty base block represents a hole in the
-    #       map where the player will explode!
+            # Repleace all none elements with empty blocks. We will
+            # iterate over the whole matrix so this method will be felixble.
+            # If we have already an element in the old matrix re-use it :D
+            for col in range(0,self.scene_width):
+                for row in range(0,self.scene_height):
+                    element = None
+                    if col < old_width and row < old_height:
+                        element = old_scene_matrix[self._get_index(col,row,old_width)]
+                        # TODO: We should not remove-add an existing item!
+                        self.removeItem(element)
+                    if element == None:
+                        element = elements.EMPTY_BLOCK(self.main_window,col,row)
+                    self.add_element(element,col,row)
         
 class GraphicsView(QtGui.QGraphicsView):
     def __init__(self, parent=None, gbcolor=QtGui.QColor('#CCCCCC'), space=10):
@@ -107,8 +148,10 @@ class GraphicsView(QtGui.QGraphicsView):
     def resizeEvent(self, event):
         QtGui.QGraphicsView.resizeEvent(self,event)
         
-    def drawBackground(self, painter, rect):        
-        # Draw the rectangle background
+    def drawBackground(self, painter, rect):
+        """
+        Draw the rectangle background
+        """
         left = rect.left()
         right = rect.right()
         top = rect.top()
@@ -147,9 +190,36 @@ class ToolSet(QtGui.QPushButton):
             if text:
                 self.setText(text)
 
-    def add_element(self, x, y):
-        # Add an element into the scene at the position (x,y) in the scene matrix
-        pass
+        # Connect the clicked dignal
+        self.clicked.connect(self._tool_clicked)
+
+    def _tool_clicked(self):
+        """
+        Route call to default instance
+        """
+        if self.element_instance:
+            self.element_instance.tool_clicked(self)
+
+    def can_element_clicked(self, element):
+        """
+        Decide if we can click the given element
+        """
+        if self.element_instance:
+            return self.element_instance.element_clicked(element)
+        return False
+    def element_clicked(self, element):
+        """
+        Route the call back to the element itself.
+        I know that is is a loop-back but this way we can
+        cut the flow in case we need it :D
+        """
+        if self.can_element_clicked(element) and self.element_instance:
+            return self.element_instance.element_clicked(element)
+
+    def get_tool_name(self):
+        if self.element_instance:
+            return self.element_instance.get_tool_name()
+        return "Tool: None"
 
 class MapEditor(QtGui.QMainWindow, Ui_MapEditor):
     def __init__(self, parent=None):
@@ -162,6 +232,7 @@ class MapEditor(QtGui.QMainWindow, Ui_MapEditor):
 
         # Create our asset manager
         self.assetManager = AssetManager(WORKING_DIR)
+        self.assetManager.load_asset("deny.png")
 
         # Create the canvas :D
         self.scene = EditorScene(self)  
@@ -172,11 +243,19 @@ class MapEditor(QtGui.QMainWindow, Ui_MapEditor):
         # We can now initialize the scene
         self.scene.initialize_scene()
 
+        # The tool that is currently active
+        self.current_tool=None
+        self.current_status=None
+
         # Init all available tools
         self.initialize_tools()
 
     def initialize_tools(self):
         self.toolSetLayout = QtGui.QVBoxLayout(self.scrollAreaWidgetContents)
+
+        # Add tool status
+        self.current_status = QtGui.QLabel("Tool: None", self)
+        self.toolSetLayout.addWidget(self.current_status)
 
         # Add world building elements
         self._add_tool_section("Brushes:",elements.ELEM_BRUSH_CLASSES)
@@ -196,6 +275,14 @@ class MapEditor(QtGui.QMainWindow, Ui_MapEditor):
                 self.toolSetLayout.addWidget(currentContainer)
             currentSetLayout.addWidget(ToolSet(tool, self))
             i=(i+1)%2
+
+    def set_current_tool(self, tool):
+        self.current_tool = tool
+        self.current_status.setText("Tool: %s"%tool.get_tool_name())
+
+    def element_clicked(self, element):
+        if self.current_tool:
+            self.current_tool.element_clicked(element)
 
 def main(vargs):
     app = QtGui.QApplication(sys.argv)

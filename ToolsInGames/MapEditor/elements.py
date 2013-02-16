@@ -22,7 +22,7 @@ class BlockRenderer(QtGui.QGraphicsItem):
         # The QGraphicsView
         self.canvas=mainWindow.graphicsView
 
-        self.gbcolor=QtGui.QColor(255, 0, 0, 128)
+        self.overlay_color=QtGui.QColor(255, 0, 0, 128)
 
         # Set size and position of the itemt
         self.xl=BLOCK_SIZE_X*xspan
@@ -41,7 +41,9 @@ class BlockRenderer(QtGui.QGraphicsItem):
 
         # Enable hoover and mouse events
         self.is_hoover=False
+        self.is_clickable=True
         self.setAcceptHoverEvents(True)
+        self.setAcceptedMouseButtons(True)
 
     def boundingRect(self):
         return self._rect
@@ -58,16 +60,14 @@ class BlockRenderer(QtGui.QGraphicsItem):
         if self.asset == None:
             painter.fillRect(self._rect,QtCore.Qt.darkCyan)
             painter.drawRect(self._rect)
-        else:
-            image = self.asset.copy()
+        elif isinstance(self.asset,QtGui.QImage):
             painter.drawImage(self._rect, self.asset)
-            #painter.drawText(self._rect, QtCore.Qt.AlignCenter, "(%d,%d)"%(self.x,self.y))
-            #painter.drawRect(self._rect)
 
-        # Draw the hoover graphic. Should represent the action on for the next click
-        if self.is_hoover:
-            painter.fillRect(self._rect.left(), self._rect.top(), self.xl, self.yl, self.gbcolor)
-            #painter.drawText(self._rect, QtCore.Qt.AlignCenter, "AA")
+        # Show the overlay state
+        if not self.is_clickable:
+            painter.drawImage(self._rect, self.mainWindow.assetManager.get_asset("deny.png"))
+        elif self.is_hoover:
+            painter.fillRect(self._rect.left()+1, self._rect.top()+1, self.xl-1, self.yl-1, self.overlay_color)
 
         # Restore painter state
         painter.restore()
@@ -80,6 +80,44 @@ class BlockRenderer(QtGui.QGraphicsItem):
     def hoverLeaveEvent(self, event):
         self.is_hoover=False
         self.scene().update()
+
+    def mousePressEvent(self, event):
+        """
+        Called when the item receives a mouse press
+        """
+        self.mainWindow.element_clicked(self)
+
+    def element_clicked(self, element):
+        """
+        A tool has received a click from an element. The tool just redirected the call to us
+        so we can perform any required action over the element
+        """
+        raise NotImplementedError("A base block must implement the 'element_clicked' method")
+
+    def convert_element(self, old_element):
+        """
+        Convert the old_element into a block of our own class. Before getting rid of the old
+        one let the new one copy any data over
+        """
+        new_element=self._create_new_element(old_element.mainWindow, old_element.x, old_element.y, old_element.xspan, old_element.yspan, old_element)
+        new_element.copy_from(old_element)
+        self.mainWindow.scene.add_element(new_element, new_element.x, new_element.y)
+
+    def _create_new_element(self, mainWindow, x, y, xspan, yspan, old_element):
+        return self.__class__(mainWindow, x, y, xspan, yspan)
+
+    def copy_from(self, old_element):
+        """
+        Once an old element has been turned into our-selfs we have the opportunity to copy
+        any data from it to persist it.
+        """
+        pass
+
+    def tool_clicked(self, tool):
+        """
+        The user selected the default instance element as the current tool
+        """
+        self.mainWindow.set_current_tool(tool)
 
     def get_id_char(self):
         """
@@ -114,6 +152,12 @@ class EmptyBlock(BlockRenderer):
 
     def get_tool_name(self):
         return "Blank"
+
+    def element_clicked(self, element):
+        if isinstance(element,self.__class__):
+            return
+        # Convert block into one of our own type
+        self.convert_element(element)
 
 class EreaseRow(BlockRenderer):
     """
@@ -163,6 +207,12 @@ class AddRow(BlockRenderer):
     def get_tool_name(self):
         return "Add Row"
 
+    def tool_clicked(self, tool):
+        """
+        Add a row to the scene matrix
+        """
+        self.mainWindow.scene.add_row()
+
 class AddColumn(BlockRenderer):
     """
     Just an empty block
@@ -179,6 +229,12 @@ class AddColumn(BlockRenderer):
     def get_tool_name(self):
         return "Add Col"
 
+    def tool_clicked(self, tool):
+        """
+        Add a row to the scene matrix
+        """
+        self.mainWindow.scene.add_col()
+
 class BaseBlock(BlockRenderer):
     """
     Base block renderer, all items inherit from this one
@@ -194,6 +250,12 @@ class BaseBlock(BlockRenderer):
 
     def _get_asset_base_name(self):
         raise NotImplementedError("A base block must implement the '_get_asset_base_name' method")
+
+    def element_clicked(self, element):
+        if isinstance(element,self.__class__):
+            return
+        # Convert block into one of our own type
+        self.convert_element(element)
 
 class BlockA(BaseBlock):
     """
@@ -239,8 +301,7 @@ class Actor(BaseBlock):
     """
     Base actor block, a player or a monster for example
     """
-    def __init__(self, mainWindow, x, y, xspan=1, yspan=2):
-        BaseBlock.__init__(self, mainWindow, x, y, xspan, yspan)
+    pass
 
 class Monster(Actor):
     """
