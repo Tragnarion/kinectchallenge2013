@@ -59,6 +59,7 @@ class BlockRenderer(QtGui.QGraphicsItem):
             painter.fillRect(self._rect,QtCore.Qt.darkCyan)
             painter.drawRect(self._rect)
         else:
+            image = self.asset.copy()
             painter.drawImage(self._rect, self.asset)
             #painter.drawText(self._rect, QtCore.Qt.AlignCenter, "(%d,%d)"%(self.x,self.y))
             #painter.drawRect(self._rect)
@@ -74,6 +75,7 @@ class BlockRenderer(QtGui.QGraphicsItem):
     def hoverEnterEvent(self, event):
         self.is_hoover=True
         self.scene().update()
+        self.mainWindow.statusBar().showMessage("Element: %s"%self.get_tool_name())
 
     def hoverLeaveEvent(self, event):
         self.is_hoover=False
@@ -83,7 +85,19 @@ class BlockRenderer(QtGui.QGraphicsItem):
         """
         Return the character that represents the block in a level
         """
-        raise NotImplementedError("A base block must implement the '_get_asset_base_name' method")
+        raise NotImplementedError("A base block must implement the 'get_id_char' method")
+
+    def get_tool_icon(self):
+        """
+        Return the icon used for the tool set for this block
+        """
+        raise NotImplementedError("A base block must implement the 'get_tool_icon' method")
+
+    def get_tool_name(self):
+        """
+        Return the name used for the tool set for this block
+        """
+        raise NotImplementedError("A base block must implement the 'get_tool_name' method")
 
 class EmptyBlock(BlockRenderer):
     """
@@ -95,6 +109,76 @@ class EmptyBlock(BlockRenderer):
         """
         return '.'
 
+    def get_tool_icon(self):
+        return None
+
+    def get_tool_name(self):
+        return "Blank"
+
+class EreaseRow(BlockRenderer):
+    """
+    Just an empty block
+    """
+    def get_id_char(self):
+        """
+        Return the character that represents the block in a level
+        """
+        return '.'
+
+    def get_tool_icon(self):
+        return None
+
+    def get_tool_name(self):
+        return "Erease Row"
+
+class EreaseColumn(BlockRenderer):
+    """
+    Just an empty block
+    """
+    def get_id_char(self):
+        """
+        Return the character that represents the block in a level
+        """
+        return '.'
+
+    def get_tool_icon(self):
+        return None
+
+    def get_tool_name(self):
+        return "Erease Col"
+
+class AddRow(BlockRenderer):
+    """
+    Just an empty block
+    """
+    def get_id_char(self):
+        """
+        Return the character that represents the block in a level
+        """
+        return '.'
+
+    def get_tool_icon(self):
+        return None
+
+    def get_tool_name(self):
+        return "Add Row"
+
+class AddColumn(BlockRenderer):
+    """
+    Just an empty block
+    """
+    def get_id_char(self):
+        """
+        Return the character that represents the block in a level
+        """
+        return '.'
+
+    def get_tool_icon(self):
+        return None
+
+    def get_tool_name(self):
+        return "Add Col"
+
 class BaseBlock(BlockRenderer):
     """
     Base block renderer, all items inherit from this one
@@ -104,6 +188,9 @@ class BaseBlock(BlockRenderer):
 
     def get_asset(self, mainWindow):
         return mainWindow.assetManager.get_asset(self._get_asset_base_name());
+
+    def get_tool_icon(self):
+        return QtGui.QIcon("assets/%s"%self._get_asset_base_name())
 
     def _get_asset_base_name(self):
         raise NotImplementedError("A base block must implement the '_get_asset_base_name' method")
@@ -115,12 +202,18 @@ class BlockA(BaseBlock):
     def _get_asset_base_name(self):
         return "tiles/BlockA%d.png"%(random.randint(0, 6));
 
+    def get_tool_name(self):
+        return "Block A"
+
 class BlockB(BaseBlock):
     """
     Block of type B. Uses random assets.
     """
     def _get_asset_base_name(self):
         return "tiles/BlockB%d.png"%(random.randint(0, 1));
+
+    def get_tool_name(self):
+        return "Block B"
 
 class Platform(BaseBlock):
     """
@@ -129,12 +222,18 @@ class Platform(BaseBlock):
     def _get_asset_base_name(self):
         return "tiles/Platform.png";
 
+    def get_tool_name(self):
+        return "Platform"
+
 class Exit(BaseBlock):
     """
     The exit block
     """
     def _get_asset_base_name(self):
         return "tiles/Exit.png";
+
+    def get_tool_name(self):
+        return "Exit"
 
 class Actor(BaseBlock):
     """
@@ -156,6 +255,9 @@ class MonsterA(Monster):
     def _get_asset_base_name(self):
         return "tiles/MonsterA.png";
 
+    def get_tool_name(self):
+        return "Monster A"
+
 class MonsterB(Monster):
     """
     A monster of type B
@@ -163,9 +265,109 @@ class MonsterB(Monster):
     def _get_asset_base_name(self):
         return "tiles/MonsterB.png";
 
+    def get_tool_name(self):
+        return "Monster B"
+
+class MonsterC(Monster):
+    """
+    A monster of type C
+    """
+    def _get_asset_base_name(self):
+        return "tiles/MonsterC.png";
+
+    def get_tool_name(self):
+        return "Monster C"
+
+class MonsterD(Monster):
+    """
+    A monster of type D
+    """
+    def _get_asset_base_name(self):
+        return "tiles/MonsterD.png";
+
+    def get_tool_name(self):
+        return "Monster D"
+
 class Player(Actor):
     """
     The player class
     """
     def _get_asset_base_name(self):
         return "tiles/Player.png";
+
+    def get_tool_name(self):
+        return "Player"
+
+class PowerUp(Actor):
+    """
+    The base power-up class
+    """
+    def _get_asset_base_name(self):
+        return "tiles/Gem.png";
+
+class Gem(PowerUp):
+    """
+    A normal gem
+    """
+    def get_tool_name(self):
+        return "Gem"
+
+class RedGem(PowerUp):
+    """
+    A normal gem
+    """
+    def get_tool_name(self):
+        return "Red Gem"
+
+# List of spawnable elements
+ELEM_CLASSES=(\
+    EmptyBlock,\
+    BlockA,\
+    BlockB,\
+    Platform,\
+    Exit,\
+    MonsterA,\
+    MonsterB,\
+    MonsterC,\
+    MonsterD,\
+    Player\
+    )
+
+# The empty block class, used to start a level
+EMPTY_BLOCK=EmptyBlock
+
+# Building block list
+ELEM_BRUSH_CLASSES=(\
+    EreaseRow,\
+    EreaseColumn,\
+    AddRow,\
+    AddColumn,\
+    EmptyBlock\
+    )
+
+# Building block list
+ELEM_WORLD_CLASSES=(\
+    BlockA,\
+    BlockB,\
+    Platform,\
+    )
+
+# List of enemies
+ELEM_ENEMY_CLASSES=(\
+    MonsterA,\
+    MonsterB,\
+    MonsterC,\
+    MonsterD\
+    )
+
+# List of building blocks
+ELEM_PLAYER_CLASSES=(\
+    Player,\
+    Exit\
+    )
+
+# List of building blocks
+ELEM_POWERUP_CLASSES=(\
+    Gem,\
+    RedGem\
+    )
