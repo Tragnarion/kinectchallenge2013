@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'MapEditor.ui'
 #
-# Created: Tue Feb 12 22:20:26 2013
+# Created: Sat Feb 16 00:56:17 2013
 #      by: pyside-uic 0.2.14 running on PySide 1.1.2
 #
 # WARNING! All changes made in this file will be lost!
@@ -30,17 +30,19 @@ class Ui_MapEditor(object):
         sizePolicy.setHeightForWidth(self.leftcontainer.sizePolicy().hasHeightForWidth())
         self.leftcontainer.setSizePolicy(sizePolicy)
         self.leftcontainer.setMinimumSize(QtCore.QSize(200, 0))
+        self.leftcontainer.setMaximumSize(QtCore.QSize(200, 16777215))
         self.leftcontainer.setObjectName("leftcontainer")
         self.verticalLayout = QtGui.QVBoxLayout(self.leftcontainer)
-        self.verticalLayout.setSpacing(0)
-        self.verticalLayout.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout.setSpacing(10)
         self.verticalLayout.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout.setObjectName("verticalLayout")
         self.scrollArea = QtGui.QScrollArea(self.leftcontainer)
         self.scrollArea.setWidgetResizable(True)
         self.scrollArea.setObjectName("scrollArea")
         self.scrollAreaWidgetContents = QtGui.QWidget()
-        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 198, 659))
+        self.scrollAreaWidgetContents.setEnabled(True)
+        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 180, 659))
+        self.scrollAreaWidgetContents.setMaximumSize(QtCore.QSize(180, 16777215))
         self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
         self.scrollArea.setWidget(self.scrollAreaWidgetContents)
         self.verticalLayout.addWidget(self.scrollArea)

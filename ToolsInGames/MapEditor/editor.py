@@ -78,24 +78,42 @@ class MapEditor(QtGui.QMainWindow, Ui_MapEditor):
         self.graphicsView.setObjectName("graphicsView")
         self.horizontalLayout.addWidget(self.graphicsView)
 
+        # Create a button for all available blocks
+        self.toolSetLayout = QtGui.QVBoxLayout(self.scrollAreaWidgetContents)
+        #button = QtGui.QPushButton("&Download", self)
+        #button.setIcon(self.assetManager.get_asset("assets/icon.png"))
+        self.toolSetLayout.addWidget(QtGui.QLabel("Brushes:", self))
+
+        for i in range(0,100):
+            currentContainer = QtGui.QWidget(self.centralwidget)
+            currentSetLayout = QtGui.QHBoxLayout(currentContainer)
+            currentSetLayout.addWidget(QtGui.QPushButton("Erease", self))
+            currentSetLayout.addWidget(QtGui.QPushButton("Blank", self))
+            self.toolSetLayout.addWidget(currentContainer)
+
         # Add the level renderer
         self.scene.addItem(BlockA(self,0,0))
         self.scene.addItem(BlockB(self,1,0))
         self.scene.addItem(BlockA(self,2,0))
         self.scene.addItem(BlockA(self,3,0))
         self.scene.addItem(BlockB(self,4,0))
+        self.scene.addItem(BlockB(self,5,0))
+        self.scene.addItem(BlockB(self,6,0))
+        self.scene.addItem(BlockB(self,7,0))
 
-        self.scene.addItem(BlockRenderer(self,0,1))
-        self.scene.addItem(BlockRenderer(self,1,1))
-        self.scene.addItem(BlockRenderer(self,2,1))
-        self.scene.addItem(BlockRenderer(self,3,1))
-        self.scene.addItem(Actor(self,4,1))
+        self.scene.addItem(Player(self,0,1))
+        self.scene.addItem(EmptyBlock(self,1,1))
+        self.scene.addItem(EmptyBlock(self,2,1))
+        self.scene.addItem(EmptyBlock(self,3,1))
+        self.scene.addItem(MonsterA(self,4,1))
 
-        self.scene.addItem(BlockRenderer(self,0,2))
-        self.scene.addItem(BlockRenderer(self,1,2))
+        #self.scene.addItem(EmptyBlock(self,0,2))
+        self.scene.addItem(EmptyBlock(self,1,2))
         self.scene.addItem(Platform(self,2,2))
         self.scene.addItem(Platform(self,3,2))
-        #self.scene.addItem(BlockRenderer(self,4,2))
+        #self.scene.addItem(EmptyBlock(self,4,2))
+
+        self.statusBar().showMessage("Current Tool: Erease")
 
 def main(vargs):
     app = QtGui.QApplication(sys.argv)

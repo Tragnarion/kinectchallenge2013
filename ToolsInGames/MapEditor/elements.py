@@ -28,7 +28,7 @@ class BlockRenderer(QtGui.QGraphicsItem):
         self.xl=BLOCK_SIZE_X*xspan
         self.yl=BLOCK_SIZE_Y*yspan
         self.x=x
-        self.y=y+(yspan-1)
+        self.y=y
         self.xspan=xspan
         self.yspan=yspan
 
@@ -37,7 +37,7 @@ class BlockRenderer(QtGui.QGraphicsItem):
 
         # Define th size of the item
         self._rect=QtCore.QRectF(QtCore.QPoint(0, 0), QtCore.QSize(self.xl, self.yl))
-        self._rect.moveCenter(QtCore.QPointF(self.x*BLOCK_SIZE_X+(xspan-1)*BLOCK_SIZE_X*0.5, -self.y*BLOCK_SIZE_Y+(yspan-1)*BLOCK_SIZE_Y*0.5))
+        self._rect.moveCenter(QtCore.QPointF(self.x*BLOCK_SIZE_X+(xspan-1)*BLOCK_SIZE_X*0.5, -(self.y+(yspan-1))*BLOCK_SIZE_Y+(yspan-1)*BLOCK_SIZE_Y*0.5))
 
         # Enable hoover and mouse events
         self.is_hoover=False
@@ -79,18 +79,34 @@ class BlockRenderer(QtGui.QGraphicsItem):
         self.is_hoover=False
         self.scene().update()
 
+    def get_id_char(self):
+        """
+        Return the character that represents the block in a level
+        """
+        raise NotImplementedError("A base block must implement the '_get_asset_base_name' method")
+
+class EmptyBlock(BlockRenderer):
+    """
+    Just an empty block
+    """
+    def get_id_char(self):
+        """
+        Return the character that represents the block in a level
+        """
+        return '.'
+
 class BaseBlock(BlockRenderer):
     """
     Base block renderer, all items inherit from this one
     """
     def __init__(self, mainWindow, x, y, xspan=1, yspan=1):
-        BlockRenderer.__init__(self, mainWindow, x, y, self._get_asset(mainWindow), xspan, yspan)
+        BlockRenderer.__init__(self, mainWindow, x, y, self.get_asset(mainWindow), xspan, yspan)
 
-    def _get_asset(self, mainWindow):
+    def get_asset(self, mainWindow):
         return mainWindow.assetManager.get_asset(self._get_asset_base_name());
 
     def _get_asset_base_name(self):
-        return ""
+        raise NotImplementedError("A base block must implement the '_get_asset_base_name' method")
 
 class BlockA(BaseBlock):
     """
@@ -127,5 +143,29 @@ class Actor(BaseBlock):
     def __init__(self, mainWindow, x, y, xspan=1, yspan=2):
         BaseBlock.__init__(self, mainWindow, x, y, xspan, yspan)
 
+class Monster(Actor):
+    """
+    The monster actor
+    """
+    pass
+
+class MonsterA(Monster):
+    """
+    A monster of type A
+    """
     def _get_asset_base_name(self):
         return "tiles/MonsterA.png";
+
+class MonsterB(Monster):
+    """
+    A monster of type B
+    """
+    def _get_asset_base_name(self):
+        return "tiles/MonsterB.png";
+
+class Player(Actor):
+    """
+    The player class
+    """
+    def _get_asset_base_name(self):
+        return "tiles/Player.png";
