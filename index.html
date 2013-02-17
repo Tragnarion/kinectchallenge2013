@@ -4,9 +4,9 @@
 	<head>
 		<meta charset="utf-8">
 
-		<title>Kinect Challenge 2013 - Desarrollo de herramientas propias para el equipo de desarrollo</title>
+		<title>Kinect Challenge 2013 - Herramientas para el desarollo</title>
 
-		<meta name="description" content="Kinect Challenge 2013 - Desarrollo de herramientas propias para el equipo de desarrollo">
+		<meta name="description" content="Kinect Challenge 2013 - Herramientas para el desarollo">
 		<meta name="author" content="Moritz WUndke">
 
 		<meta name="apple-mobile-web-app-capable" content="yes" />
@@ -42,6 +42,11 @@
 					<h3>Herramientas para el desarollo</h3>
 					<p>
 						<small>Moritz Wundke - Lead Programmer <a href="http://www.tragnarion.com/" target="_blank">Tragnarion Studios</a></small>
+						
+					</p>
+					<p>
+						<small><a href="https://github.com/Tragnarion/kinectchallenge2013" target="_blank">Codigo fuente</a>
+						<a href="http://tragnarion.github.com/kinectchallenge2013" target="_blank">Presentación</a></small>
 					</p>
 				</section>
 
@@ -83,11 +88,12 @@
 						<p>
 							TODO
 						</p>
-						<ol>
+						<ul>
 							<li class="fragment"><em>Control de versiones</em></li>
 							<li class="fragment"><em>Planificador de tareas</em></li>
 							<li class="fragment"><em>Base de datos de bugs/incidencias</em></li>
-						</ol>
+							<li class="fragment"><em>Integración continua</em></li>
+						</ul>
 					</section>
 
 					<section>
@@ -99,13 +105,19 @@
 					<section>
 						<h2>Planificador de tareas</h2>
 						<p>
-							Hablar sobre Green Hopper, Trello, Hansoft y Trac
+							Hablar sobre Green Hopper, Trello y Trac
 						</p>
 					</section>
 					<section>
 						<h2>Base de datos de bugs/incidencias</h2>
 						<p>
-							Hablar sobre FogBugz, Hansof y Trac
+							Hablar sobre FogBugz y Trac
+						</p>
+					</section>
+					<section>
+						<h2>Integración continua</h2>
+						<p>
+							Hablar sobre Hudson, Buildbot y Jenkins
 						</p>
 					</section>
 				</section>
@@ -116,12 +128,11 @@
 						<p>
 							Como empezar una herramienta y la decisión con qué usarla.
 						</p>
-						<ol>
+						<ul>
 							<li class="fragment"><em>Directas e indirectas</em></li>
 							<li class="fragment"><em>Los datos</em></li>
-							<li class="fragment"><em>Tareas automatizadas</em></li>
-							<li class="fragment"><em>...</em></li>
-						</ol>
+							<li class="fragment"><em>Interfaz por commandos</em></li>
+						</ul>
 					</section>
 					<section>
 						<h2>Directas e indirectas</h2>
@@ -134,19 +145,99 @@
 						<p>
 							Hablar sobre tipos de datos y ficheros para el desarrollo. Meta datos pueden almacenar información útil de desarrollo, etc etc
 						</p>
-						<ol>
+						<ul>
 							<li class="fragment"><em>Control de versiones</em></li>
 							<li class="fragment"><em>Datos binarios o en texto? (JSON,XML,CSV vs Binarios en producción, meta datos en archivos de desarrollo</em></li>
 							<li class="fragment"><em>Base de datos de bugs/incidencias</em></li>
-						</ol>
+						</ul>
+					</section>
+					<section>
+						<h2>Interfaz por commandos</h2>
+						<p>
+							Hablar sobre tipos de datos y ficheros para el desarrollo. Meta datos pueden almacenar información útil de desarrollo, etc etc
+						</p>
 					</section>
 				</section>
 
 				<section>
-					<h2>rvl.io</h2>
+					<section>
+						<h2>Caso prácticos</h2>
+						<p>
+							Vamos a ver una serie de ejemplos de herramientas reales y otras creadas expresamente para esta charla.
+						</p>
+						<ul>
+							<li class="fragment"><em>Scripts por lotes</em></li>
+							<li class="fragment"><em>Python</em></li>
+							<li class="fragment"><em>Ejemplo de tools para un juego de plataformas</em></li>
+						</ul>
+					</section>
+					<section>
+						<h2>Scripts por lotes I</h2>
+						<p>
+							Crear scripts en archivos por lotes tipo .bat es una herramiente de mucha utilidad. A veces se olvida la facilidad que orecen por su poca complejidad.
+						</p>
+						<p>
+							Un script por lotes es ideal para mezclar diversas tareas o funcionalidad de otras herramientas y ofrece todo ese poder para usarios no técnicos.
+						</p>
+					</section>
+					<section>
+						<h2>Scripts por lotes II</h2>
+						<p>
+							Un ejemplo real te archivos por lotes es el sistema de empaquetado de <a href="http://www.scourgeoutbreak.com/" target="_blank">Scourge: Outbreak</a>. El juego es compatible con hasta 4 plataformas: PC, OSx, Xbox 360 y PS3.
+						</p>
+						<p>
+							El problema viene cuando cada plataforma conlleva distintas limitaciones los cuales el equipo entero ha de respetar. Lo cual nos define los siguientes requisitos para el sistema de empaquetado:
+						</p>
+						<ul>
+							<li class="fragment"><em>Sencillo:</em> Crear un instalador de una plataforma con un sólo click de ratón.</li>
+							<li class="fragment"><em>Flexible:</em> Crear un instalador solamente de lo que se esté desarrollando.</li>
+							<li class="fragment"><em>Estable:</em> La creación debe completar sin errores y si existen errores han de presentarse de manera entendible.</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Scripts por lotes III</h2>
+						<p>
+							Para poder ejecutar distintas acciones dependiendo de la plataforma deseada podemos usar saltos condicionales.
+						</p>
+						<pre><code contenteditable>@echo off
+set Platform=PC
+rem set Platform=MAC
+rem set Platform=XBOX
+
+goto:section_%Platform%
+
+:section_PC
+echo This is the PC Section
+goto:end
+
+:section_MAC
+echo This is the MAC Section
+goto:end
+
+:section_XBOX
+echo This is the XBOX Section
+goto:end
+
+:end
+pause</code></pre>
 					<p>
-						If you don't like writing slides in HTML you can use the online editor <a href="http://www.rvl.io" target="_blank">rvl.io</a>.
+						Si usamos un argumento de linea de comandos como identificador de plataforma podremos ejecutar una serie de acciones distintas para cada una de ellas.
 					</p>
+					</section>
+					<section>
+						<h2>Scripts por lotes IV</h2>
+						<p>
+							Otro truco útil cuando usamos scripts por lotes es la habilidad de definir funciones reusables.
+						</p>
+						<pre><code>@echo off
+goto:end_functions
+
+:myFunction
+echo This is just a simple function
+goto:eof
+
+:end_functions</code></pre>
+					</section>
 				</section>
 
 				<section>
