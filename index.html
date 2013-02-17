@@ -171,6 +171,8 @@
 							<li class="fragment"><em>Ejemplo de tools para un juego de plataformas</em></li>
 						</ul>
 					</section>
+				</section>
+				<section>
 					<section>
 						<h2>Scripts por lotes I</h2>
 						<p>
@@ -199,7 +201,7 @@
 						<p>
 							Para poder ejecutar distintas acciones dependiendo de la plataforma deseada podemos usar saltos condicionales.
 						</p>
-						<pre><code contenteditable>@echo off
+						<pre><code>@echo off
 set Platform=PC
 rem set Platform=MAC
 rem set Platform=XBOX
@@ -237,6 +239,50 @@ echo This is just a simple function
 goto:eof
 
 :end_functions</code></pre>
+					</section>
+					<section>
+						<h2>Scripts por lotesV</h2>
+						<p>
+							Una tarea común cuando procesamos datos por lotes es iterar sobre una lista. El siguiente ejemplo itera sobre todas las palabras separadas por espacios de un archivo de texto y ejecuta una función para cada una de ellas.
+						</p>
+						<pre><code>:processWord
+REM Word list from file
+set WordList=
+FOR /F "eol= tokens=* delims= usebackq" %%i IN (%1) DO (
+	set WordList=%%i
+)
+FOR %%i IN (%WordList%) DO (
+	%2 %%i
+)
+GOTO:EOF</code></pre>
+					</section>
+					<section>
+						<h2>Scripts por lotes VI</h2>
+						<p>
+							Algunas acciones como averiguar si una cadena de texto contiene otra cadena de texto pueden volverse sumamente complicados y hay que sopesar si es necesario crear la tarea usando scripts por lotes.
+						</p>
+						<pre><code>:containsString
+setlocal
+set $answer=N
+if {%1} EQU {} goto endContainsString
+if {%1} EQU {""} goto endContainsString
+if {%2} EQU {} goto endContainsString
+if {%2} EQU {""} goto endContainsString
+set $string=####%1####
+set $string=%$string:####"=%
+set $string=%$string:"####=%
+if "%$string%" EQU "" goto endContainsString
+set $string=%$string:####=%
+set $substring=####%2####
+set $substring=%$substring:####"=%
+set $substring=%$substring:"####=%
+if "%$substring%" EQU "" goto endContainsString
+set $substring=%$substring:####=%
+for /f "Tokens=*" %%k in ('@echo %%$string:%$substring%^=%%') do @set $work$=%%k
+if NOT "%$string%" EQU "%$work$%" set $answer=Y
+:endContainsString
+endlocal&set $answer=%$answer%
+GOTO:EOF</code></pre>
 					</section>
 				</section>
 
