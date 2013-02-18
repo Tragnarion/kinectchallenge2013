@@ -178,6 +178,7 @@ class EreaseRow(BlockRenderer):
     def element_clicked(self, element):
         # Not finished!
         #self.mainWindow.scene.remove_row(element.y)
+        pass
 
 class EreaseColumn(BlockRenderer):
     """
@@ -198,6 +199,7 @@ class EreaseColumn(BlockRenderer):
     def element_clicked(self, element):
         # Not finished!
         #self.mainWindow.scene.remove_col(element.x)
+        pass
 
 class AddRow(BlockRenderer):
     """
