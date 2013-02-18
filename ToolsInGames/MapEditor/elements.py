@@ -175,6 +175,10 @@ class EreaseRow(BlockRenderer):
     def get_tool_name(self):
         return "Erease Row"
 
+    def element_clicked(self, element):
+        # Not finished!
+        #self.mainWindow.scene.remove_row(element.y)
+
 class EreaseColumn(BlockRenderer):
     """
     Just an empty block
@@ -190,6 +194,10 @@ class EreaseColumn(BlockRenderer):
 
     def get_tool_name(self):
         return "Erease Col"
+
+    def element_clicked(self, element):
+        # Not finished!
+        #self.mainWindow.scene.remove_col(element.x)
 
 class AddRow(BlockRenderer):
     """
@@ -231,7 +239,7 @@ class AddColumn(BlockRenderer):
 
     def tool_clicked(self, tool):
         """
-        Add a row to the scene matrix
+        Add a column to the scene matrix
         """
         self.mainWindow.scene.add_col()
 

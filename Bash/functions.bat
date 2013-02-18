@@ -5,7 +5,7 @@ rem Function Definitions
 rem ------------------------------------------------------------------
 
 REM Skip function definitions
-goto setup
+goto EndFunctions
 
 rem ------------------------------------------------------------------
 REM This function will process all words from a given text file using

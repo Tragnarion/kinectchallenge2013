@@ -72,21 +72,23 @@ class EditorScene(QtGui.QGraphicsScene):
         self._recreate_scene(self.scene_width+1,self.scene_height)
 
     def remove_row(self, y):
-        # Remove all items from the scene and null the scene ref
-        for i in range(0,self.scene_width):
+        # Remove all items from the scene and null the scene 
+        for i in reversed(range(0,self.scene_width)):
             index = self._get_index(i, y, self.scene_width)
             self.removeItem(self.scene_matrix[index])
             self.scene_matrix[index]=None
+        # TODO: All items with Y higher then the ereased row should decrement their Y
         self._clean_null_elements()
 
     def remove_col(self, x):
         """
         Remove all items from the scene and null the scene ref
         """
-        for i in range(0,self.scene_height):
+        for i in reversed(range(0,self.scene_height)):
             index = self._get_index(x, i, self.scene_width)
             self.removeItem(self.scene_matrix[index])
             self.scene_matrix[index]=None
+        # TODO: All items with X higher then the ereased col should decrement their X
         self._clean_null_elements()
 
     def _clean_null_elements(self):
