@@ -55,8 +55,11 @@
 					<section>
 						<h2>Herramientas</h2>
 						<p>
-							Una herramienta de desarollo es tan simple como un script que apaga un equipo a una determinada hora o tan complicado como un sistema de distribución automática ala Steam.
+							Una herramienta de desarrollo es tan simple como un script que apaga un equipo a una determinada hora o tan complicado como un sistema de distribución automática ala Steam.
 						</p>
+						<aside class="notes">
+							Ask the attendends if they use tools for their developments and in any case if they created there own already?
+						</aside>
 					</section>
 					<section>
 						<h3>¿Para quíen?</h3>
@@ -64,19 +67,22 @@
 							Las herramientas son para todos. Si alguien dice que no necesita una herramienta o que ya tiene todas las necesarias simplemente aún no ha descubierto donde fallan.
 						</p>
 						<ul>
-							<li class="fragment"><em>Diseño</em> necesita herramientas para analizar el producto o averiguar porqué falla, ...</li>
-							<li class="fragment"><em>Arte</em> ha de conocer el estado de los recursos y si es viable usar más o menos, ...</li>
-							<li class="fragment"><em>Sonido</em> ha de saber si la espacialización es correcta en un nivel, ...</li>
-							<li class="fragment"><em>Programación</em> ha de poder verificar porqué se reinició el juego, ...</li>
+							<li class="fragment"><em>Diseño:</em> necesita herramientas para analizar el producto o averiguar porqué falla, ...</li>
+							<li class="fragment"><em>Arte:</em> ha de conocer el estado de los recursos y si es viable usar más o menos, ...</li>
+							<li class="fragment"><em>Sonido:</em> ha de saber si la espacialización es correcta en un nivel, ...</li>
+							<li class="fragment"><em>Programación:</em> ha de poder verificar porqué se reinició el juego, ...</li>
 						</ul>
 						<p class="fragment">
 							Las posibilidades son infinitas!
 						</p>
+						<aside class="notes">
+							Some examples: PRG: script to make binaries, ART: Plugin de FBX para importar modelos en el UE3.
+						</aside>
 					</section>
 					<section>
-						<h3>¿Porqué?</h3>
+						<h3>¿Por qué?</h3>
 						<p class="fragment">
-							Cuando pensamos en crear una herramienta es importante no caer en la tentación de hacerlo todo de 0. ¿Existe ya una herramienta que encaje en mis requerimientos? ¿Es viable usarla? ¿El coste es menor que un desarrollo propio?
+							Cuando pensamos en crear una herramienta es importante no caer en la tentación de hacerlo todo de cero. ¿Existe ya una herramienta que encaje en mis requerimientos? ¿Es viable usarla? ¿El coste es menor que un desarrollo propio?
 						</p>
 						<p class="fragment">
 							Si no encontramos ninguna herramienta que se ajuste a nuestras necesidades es probable que la tengamos que crear nosotros mismos.
@@ -85,10 +91,10 @@
 					<section>
 						<h3>¡Inversión!</h3>
 						<p class="fragment">
-							La mayoría de las veces es muy difícil demostrar la vitalidad de una herramienta. Es posible que la herramienta tenga un único uso y se use una sóla vez pero que sea muy difícil realizar una tarea a mano.
+							La mayoría de las veces es muy difícil demostrar la vitalidad de una herramienta. Es posible que la herramienta tenga un único uso y se use una sola vez pero que sea muy difícil realizar una tarea a mano.
 						</p>
 						<p class="fragment">
-							Un ejemplo de una herramienta de un sólo uso fue la que desarrollamos para descubir que en un nivel teniamos recursos cargados sin que nos dimos cuenta. Sólo se ejecutó una vez pero se consigió resolver el problema que no parecia tener solución en un principio.
+							Un ejemplo de una herramienta de un sólo uso fue la que desarrollamos para descubrir que en un nivel teníamos recursos cargados sin que nos dimos cuenta. Sólo se ejecutó una vez pero se consiguió resolver el problema que no parecía tener solución en un principio.
 						</p>
 					</section>
 				</section>
@@ -106,7 +112,7 @@
 						<ul>
 							<li class="fragment"><em>Control de versiones</em></li>
 							<li class="fragment"><em>Planificador de tareas</em></li>
-							<li class="fragment"><em>Base de datos de bugs/incidencias</em></li>
+							<li class="fragment"><em>Base de datos de bugs</em></li>
 							<li class="fragment"><em>Integración continua</em></li>
 						</ul>
 					</section>
@@ -117,10 +123,10 @@
 							La regla de oro del desarrollo de software es: <b>Lo que no esta versionado no existe</b>
 						</p>
 						<p class="fragment">
-							Aunque parezca una frase populista tiene mucho sentido. Trabajándo en equipo es importante que cada miembro sepa en lo que esta trabajando ya que entre ellos existen dependencias. Una persona que trabaja en local trabaja fuera del proyecto y representa un peligro:
+							Aunque parezca una frase populista tiene mucho sentido. Trabajando en equipo es importante que cada miembro sepa en lo que esta trabajando ya que entre ellos existen dependencias. Una persona que trabaja en local trabaja fuera del proyecto y representa un peligro:
 						</p>
 						<ul>
-							<li class="fragment"><em>Perdidia de trabajo:</em> un simple fallo de un disco duro nos puede hacer perder semanas de trabajo.</li>
+							<li class="fragment"><em>Perdida de trabajo:</em> un simple fallo de un disco duro nos puede hacer perder semanas de trabajo.</li>
 							<li class="fragment"><em>Conflictos:</em> entre el trabajo de varias personas.</li>
 							<li class="fragment"><em>Bugs:</em> sin un log de cambios es imposible saber porque empezó a fallar un determinado sistema.</li>
 							<li class="fragment"><em>Culpable:</em> a veces es importante poder señalizar al culpable de un cambio.</li>
@@ -129,7 +135,7 @@
 					<section>
 						<h2>Control de versiones II</h2>
 						<p class="fragment">
-							La mayoria de sistemas de control de versiones se pueden catalogar en dos grupos
+							La mayoría de sistemas de control de versiones se pueden catalogar en dos grupos:
 						</p>
 						<ul>
 							<li class="fragment"><em>Sistemas de control de versiones centralizado</em></li>
@@ -141,11 +147,20 @@
 								<li class="fragment"><em>Git, Mercurial (hg) o Kiln</em></li>
 							</ul>
 						</ul>
+						<aside class="notes">
+							Talk a bit about what are they all about. Kiln is a fork of Mercurial.
+
+							SVN: Most commonly used
+							Perforce: Excelent support for big files
+							Git: Text files
+							Mercurial: Using the big file extension supports BLOBs too
+							Kiln: comes with extra sugar like a code review system
+						</aside>
 					</section>
 					<section>
 						<h2>Planificador de tareas</h2>
 						<p class="fragment">
-							Si no sabemos lo que estamos haciendo seguramente no llegaremos a terminar lo que queremos. La mayoría de herramientas siguen filosofias tales como:
+							Si no sabemos lo que estamos haciendo seguramente no llegaremos a terminar lo que queremos. La mayoría de herramientas siguen filosofías tales como:
 						</p>
 						<ul>
 							<li class="fragment"><em>Scrum</em></li>
@@ -156,7 +171,7 @@
 						<ul>
 							<li class="fragment"><em>Existen herramientas gratuitas como:</em></li>
 							<ul>
-								<li class="fragment"><em>Trello:</em> especial para desarollos usando Kanban</li>
+								<li class="fragment"><em>Trello:</em> especial para desarrollos usando Kanban</li>
 								<li class="fragment"><em>Trac:</em> con plugins para Scrum</li>
 							</ul>
 							<li class="fragment"><em>O de pago:</em></li>
@@ -167,53 +182,75 @@
 						</ul>
 					</section>
 					<section>
-						<h2>Base de datos de bugs/incidencias</h2>
+						<h2>Base de datos de bugs</h2>
 						<p class="fragment">
 							Otra herramienta sumamente importante es la que nos ayuda a saber lo que falla. Llegado un punto en el desarrollo es esencial que sepamos que está roto o que partes han de mejorarse para poder llegar a la calidad deseada.
-							Hablar sobre FogBugz, Jira y Trac
 						</p>
 						<ul>
 							<li class="fragment"><em>Existen herramientas gratuitas como:</em></li>
 							<ul>
-								<li class="fragment"><em>Trello:</em> especial para desarollos usando Kanban</li>
-								<li class="fragment"><em>Trac:</em> con plugins para Scrum</li>
+								<li class="fragment"><em>Trac:</em> un ticket puede ser considerado una tarea o un bug.</li>
+								<li class="fragment"><em>Bugzilla:</em> sistema tradicional para gestión de bugs</li>
 							</ul>
 							<li class="fragment"><em>O de pago:</em></li>
 							<ul>
-								<li class="fragment"><em>Green Hopper:</em> para Kanban o Scrum</li>
-								<li class="fragment"><em>Hansoft:</em> para Kanban, Scrum, Lean o Extreme Programming</li>
+								<li class="fragment"><em>Jira:</em> para Kanban o Scrum</li>
+								<li class="fragment"><em>FogBugz:</em> para Kanban, Scrum, Lean o Extreme Programming</li>
+								<li class="fragment"><em>Hansoft:</em> incluye un sistema de control de calidad muy sofisticado</li>
 							</ul>
 						</ul>
+						<aside class="notes">
+							Talk about the typical example when a crash happens and someone has to findout what could have been produced the crash. Seek commits made and what has been fixed recently.
+						</aside>
 					</section>
 					<section>
-						<h2>Integración continua</h2>
-						<p>
-							Hablar sobre Hudson, Buildbot y Jenkins
+						<h2>Integración continua (CI)</h2>
+						<p class="fragment">
+							La integración continua se basa en hacer integraciones automáticas de un proyecto cada vez que se produce un cambio en el proyecto.
 						</p>
+						<p class="fragment">
+							Cada vez que subimos codigo al repositorio se disparan acciones que compilan el cambio, realizan cambios y envian informes de resultados.
+						</p>
+						<p class="fragment">
+							Un ejemplo son las <b>nighlty-builds</b>. Cada noche se realiza un proceso completo hasta empaquetar la applicación con el fin de realizar pruebas exhaustivas con la mayor frequencia posible.
+						</p>
+						<p class="fragment">
+							Hay que tener claro que no todos los procesos se pueden crear en un CI, si aumenta la complejidad de la tarea es una buena idea crear una herramienta que nos haga de interfaz.
+						</p>
+						<ul>
+							<li class="fragment"><em>Hudson</em></li>
+							<li class="fragment"><em>Buildbot</em></li>
+							<li class="fragment"><em>Jenkins</em></li>
+						</ul>
+						<aside class="notes">
+							Talk about why nightlies are uberimportant! If we now the changeset of each build finding which changes produced a bug is vital. If we find early what is the cause and have it isolated we can seek for a proper fix.
+						</aside>
 					</section>
 					<section>
 						<h2>GitHub y BitBucket</h2>
 						<p class="fragment">
-							Ambos son servicios que proporcionan repositorios public y privados. Incluyen muchas herramientas en su interfaz web.
+							Ambos son servicios que proporcionan repositorios públicos y privados. Incluyen muchas herramientas en su interfaz web.
 						</p>
 						<p class="fragment">
 							GitHub.com
 						</p>
 						<ul>
-							<li class="fragment"><em>Repositorios public ilimitados</em></li>
+							<li class="fragment"><em>Repositorios públicos ilimitados</em></li>
 							<li class="fragment"><em>Repositorios privados de pago</em></li>
 							<li class="fragment"><em>Comunidad open-source inmejorable</em></li>
-							<li class="fragment"><em>Sólo soporta GIT</em></li>
+							<li class="fragment"><em>Soporta GIT aunque existe un plogin para mercurial</em></li>
 						</ul>
 						<p class="fragment">
 							BitBucket.org
 						</p>
 						<ul>
-							<li class="fragment"><em>Repositorios public ilimitados</em></li>
-							<li class="fragment"><em>Repositorios privados de pago</em></li>
-							<li class="fragment"><em>Comunidad open-source inmejorable</em></li>
-							<li class="fragment"><em>Sólo soporta GIT</em></li>
+							<li class="fragment"><em>Repositorios públicos ilimitados</em></li>
+							<li class="fragment"><em>Repositorios privados ilimitados para hasta 5 usuarios</em></li>
+							<li class="fragment"><em>Siporta Git y Mercurial</em></li>
 						</ul>
+						<aside class="notes">
+							Why online repos are a good choice for small teams!
+						</aside>
 					</section>
 				</section>
 
@@ -222,7 +259,7 @@
 					<section>
 						<h2>Herramientas propias</h2>
 						<p class="fragment">
-							Como empezar una herramienta y qué hemos de tener encuenta!
+							Como empezar una herramienta y qué hemos de tener en cuenta!
 						</p>
 						<ul>
 							<li class="fragment"><em>Directas e indirectas</em></li>
@@ -237,8 +274,11 @@
 							En general suelen existir dos tipos de herramientas: directas, aquellas que afectan directamente al desarrollo del producto, e indirectas, aquellas que no están directamente ligadas al desarrollo del producto.
 						</p>
 						<p class="fragment">
-							Las herramientas directas son las más evidentes. Un juego, por ejemplo, requiere de un editor de niveles. En cambio las herramientas indirectas son las que no se ven a simple vsita y suelen caer en el olvido.
+							Las herramientas directas son las más evidentes. Un juego, por ejemplo, requiere de un editor de niveles. En cambio las herramientas indirectas son las que no se ven a simple vista y suelen caer en el olvido.
 						</p>
+						<aside class="notes">
+							Ask attendees of they already created a indirect tool
+						</aside>
 					</section>
 					<section>
 						<h2>Los datos</h2>
@@ -247,29 +287,41 @@
 						</p>
 						<ul>
 							<li class="fragment"><em>Bianrios:</em> fáciles de leer/escribir por un programa. Difícil para un humano.</li>
-							<li class="fragment"><em>JSON, XML:</em> más lentos de leer/escribir pero leible por humanos. Pueden ser usados de metadatos incustrados en los archivos binarios.</li>
+							<li class="fragment"><em>JSON, XML:</em> más lentos de leer/escribir pero legible por humanos. Pueden ser usados de meta-datos incrustados en los archivos binarios.</li>
 							<li class="fragment"><em>CSV:</em> formato simple pero útil para representar datos sin procesar. Pueden ser importado en hojas de cálculo.</li>
 						</ul>
+						<aside class="notes">
+							Make sure talk about that serializing data into test as JSON makes integration between different tools easy!
+						</aside>
 					</section>
 					<section>
 						<h2>Interfaz por commandos</h2>
 						<p class="fragment">
-							Al crear cualquier herramienta tenemos que tener en mente que pueda ser usado en infinidad de ámbitos. Si creamos las herramientas pensando desde el principio de que puedan ser usados por linea de comandos podremos integrarlas en otros systemas. Incluso pueden ser usados por otras herramientas.
+							Al crear cualquier herramienta tenemos que tener en mente que pueda ser usado en infinidad de ámbitos. Si creamos las herramientas pensando desde el principio de que puedan ser usados por linea de comandos podremos integrarlas en otros sistemas. Incluso pueden ser usados por otras herramientas.
 						</p>
+						<p class="fragment">
+							Una herramienta que no tenga una interfaz por commandos pierde la mitatd de su potencial al no poder integrarse en otras de manera directa.
+						</p>
+						<aside class="notes">
+							Talk about the example of building Scourge. Many different tools working together. The whole system can be started using CI.
+						</aside>
 					</section>
 					<section>
 						<h2>Observar al usuario!</h2>
 						<p class="fragment">
-							La mayoria de las herramientas nacen de la necesidad de un individuo. En muchas ocasiones el individuo pide una determinada funcionalidad que en realidad no se ajusta a sus necesidades. Es importante realizar un análisis de conocimiento para poder descubir qué realmente requiere la persona que nos pide una herramienta.
+							La mayoría de las herramientas nacen de la necesidad de un individuo. En muchas ocasiones el individuo pide una determinada funcionalidad que en realidad no se ajusta a sus necesidades. Es importante realizar un análisis de conocimiento para poder descubir qué realmente requiere la persona que nos pide una herramienta.
 						</p>
 						<p class="fragment">
 							Para poder realizar un análisis nos centraremos en tres tipos de conocimiento:
 						</p>
 						<ul>
-							<li class="fragment"><em>Explícito:</em> conocimiento del que somos totalmente concientes. Representa una fracción del conocimiento.</li>
-							<li class="fragment"><em>Implícito:</em> conocimiento del que somos conciente pero que hemos adquirido como los hábitos.</li>
-							<li class="fragment"><em>Tácito:</em> totalmente inconciente. Muy difícil de registrar.</li>
+							<li class="fragment"><em>Explícito:</em> conocimiento del que somos totalmente cocientes. Representa una fracción del conocimiento.</li>
+							<li class="fragment"><em>Implícito:</em> conocimiento del que somos cocientes pero que hemos adquirido como los hábitos.</li>
+							<li class="fragment"><em>Tácito:</em> totalmente inconsciente. Muy difícil de registrar.</li>
 						</ul>
+						<aside class="notes">
+							Like in every development creating tools has to birden with users too. The user hardly knows what he needs and will for sure ask for more stuff that is really required.
+						</aside>
 					</section>
 				</section>
 
@@ -283,7 +335,7 @@
 						<ul>
 							<li class="fragment"><em>Scripts por lotes</em></li>
 							<li class="fragment"><em>Python</em></li>
-							<li class="fragment"><em>Telemetria</em></li>
+							<li class="fragment"><em>Telemetría</em></li>
 							<li class="fragment"><em>Editor de niveles</em></li>
 						</ul>
 					</section>
@@ -292,10 +344,10 @@
 					<section>
 						<h2>Scripts por lotes I</h2>
 						<p>
-							Crear scripts en archivos por lotes tipo .bat es una herramiente de mucha utilidad. A veces se olvida la facilidad que orecen por su poca complejidad.
+							Crear scripts en archivos por lotes tipo .bat son  de mucha utilidad. A veces se olvida la facilidad que ofrecen por su poca complejidad.
 						</p>
 						<p>
-							Un script por lotes es ideal para mezclar diversas tareas o funcionalidad de otras herramientas y ofrece todo ese poder para usarios no técnicos.
+							Un script por lotes es ideal para mezclar diversas tareas o funcionalidad de otras herramientas y ofrece todo ese poder para usuarios no técnicos.
 						</p>
 					</section>
 					<section>
@@ -311,6 +363,9 @@
 							<li class="fragment"><em>Flexible:</em> Crear un instalador solamente de lo que se esté desarrollando.</li>
 							<li class="fragment"><em>Estable:</em> La creación debe completar sin errores y si existen errores han de presentarse de manera entendible.</li>
 						</ul>
+						<aside class="notes">
+							Example: Texture capacities on mobile devices vs consoles vs PCs. We have to process the resources and so we shall create tools that takes that task.
+						</aside>
 					</section>
 					<section>
 						<h2>Scripts por lotes III</h2>
@@ -345,7 +400,7 @@ pause</code></pre>
 					<section>
 						<h2>Scripts por lotes IV</h2>
 						<p>
-							Otro truco útil cuando usamos scripts por lotes es la habilidad de definir funciones reusables.
+							Otro truco útil cuando usamos scripts por lotes es la habilidad de definir funciones recusables.
 						</p>
 						<pre><code>@echo off
 goto:end_functions
@@ -357,7 +412,7 @@ goto:eof
 :end_functions</code></pre>
 					</section>
 					<section>
-						<h2>Scripts por lotesV</h2>
+						<h2>Scripts por lotes V</h2>
 						<p>
 							Una tarea común cuando procesamos datos por lotes es iterar sobre una lista. El siguiente ejemplo itera sobre todas las palabras separadas por espacios de un archivo de texto y ejecuta una función para cada una de ellas.
 						</p>
@@ -406,10 +461,10 @@ GOTO:EOF</code></pre>
 					<section>
 						<h2>Python I</h2>
 						<p class="fragment">
-							Python es un lenguaje de programación dinámico interpretae muy usado en el desarrollo de videojuegos. Se usa especialmente para crear herramientas.
+							Python es un lenguaje de programación dinámico interpretado muy usado en el desarrollo de videojuegos. Se usa especialmente para crear herramientas.
 						</p>
 						<p class="fragment">
-							Las ventajas de python para el desarrollo de herramientas son:
+							Las ventajas de Python para el desarrollo de herramientas son:
 						</p>
 						<ul>
 							<li class="fragment"><em>Orientado a objetos</em></li>
@@ -422,10 +477,10 @@ GOTO:EOF</code></pre>
 					<section>
 						<h2>Python II</h2>
 						<p class="fragment">
-							Pero ¿porqué es tan usado en videojuegos?
+							Pero ¿por qué es tan usado en videojuegos?
 						</p>
 						<p class="fragment">
-							Básicamente porque es multiplataforma y favorece al desarrollo rápido debido a que si se necesita algo habrá un paquete de python qye lo haga. Y sino se crea. En Python tenemos al alcanze de un click:
+							Básicamente porque es multi-plataforma y favorece al desarrollo rápido debido a que si se necesita algo seguramente habrá un paquete de Python que ya lo haga. Y sino se crea. En Python tenemos al alcanza de un click:
 						</p>
 						<ul>
 							<li class="fragment"><em>Qt:</em> mediante PySide (oficial) o PyQt</li>
@@ -437,7 +492,7 @@ GOTO:EOF</code></pre>
 					<section>
 						<h2>Python III</h2>
 						<p class="fragment">
-							Vamos aver un ejemplo real. Nos encontramos en el caso de tener que comparar dos rutas y buscar si en ambas hay archivos duplicados.
+							Nos encontramos en el caso de tener que comparar dos rutas y buscar si en ambas hay archivos duplicados.
 						</p>
 						<p class="fragment">
 							Decidimos de crear una herramienta por el simple hecho de que se podría automatizar el proceso de verificar que ambas rutas no contuviesen elementos duplicados y resultaba más sencillo que usar un programa de comparación.
@@ -462,16 +517,16 @@ def compare_dirs(dir1, dir2):
             if file1_base == file2_base:
                 print("Duplicated file found: %s\n - %s\n - %s"%(file1_base, file1, file2))</code></pre>
                 		<p class="fragment">
-							Vamos a explicar las partes importantes del código.
+							Hay alguna cosa que os llame la atención de manera especial?
 						</p>
 					</section>
 					<section>
 						<h2>Python IV</h2>
-						<p class="fragment">
-							Lo primero que vemos es que en vez de usar la palabra clave <b>return</b> usamos <b>yield</b>. La idea es que cuando llegamos a un yield devolvemos el valor pero la ejecución no termina, sino que la siguiente vez que ejecutemos la función seguimos desde el mismo sitio. Lo que hemos hecho es usar un <b>generador</b> y que se suele usar cuando se tiene una gran cantidad de datos potenciales que se van a leer una sola vez.
-						</p>
 						<pre><code>for x in walk_dir(fullpath):
 	yield x</code></pre>
+					<p class="fragment">
+							Lo primero que vemos es que en vez de usar la palabra clave <b>return</b> usamos <b>yield</b>. La idea es que cuando llegamos a un yield devolvemos el valor pero la ejecución no termina, sino que la siguiente vez que ejecutemos la función seguimos desde el mismo sitio. Lo que hemos hecho es usar un <b>generador</b> y que se suele usar cuando se tiene una gran cantidad de datos potenciales que se van a leer una sola vez.
+						</p>
 					</section>
 				</section>
 
@@ -479,7 +534,7 @@ def compare_dirs(dir1, dir2):
 					<section>
 						<h2>Telemetria - Heat Maps I</h2>
 						<p class="fragment">
-							Las herramientas telemétricas son herramientas indirectas que se suelen olvidar.
+							Las herramientas tele-métricas son herramientas indirectas que se suelen olvidar.
 						</p>
 						<p class="fragment">
 							Un heatmap es una imagen sobrepuesta encima de otra que representa un entorno. La imagen sobrepuesta contiene marcas de <b>calor</b> para poder visualizar distintos hechos.
@@ -495,7 +550,7 @@ def compare_dirs(dir1, dir2):
 							Otro ejemplo del mismo juego es el mapa de 'kills'.
 						</p>
 						<p>
-							 Si observamos atentamente veremos que casi no hay diferencias pero esas diferencias son de vital importancia para el diseñador de niveles ya que nos puede mostrar que el usario no esta jugando como esperabamos.
+							 Si observamos atentamente veremos que casi no hay diferencias pero esas diferencias son de vital importancia para el diseñador de niveles ya que nos puede mostrar que el usuario no esta jugando como esperábamos.
 							<img src="img/KillHeatmap.png">
 						</p>
 					</section>
@@ -507,7 +562,7 @@ def compare_dirs(dir1, dir2):
 						</p>
 					</section>
 					<section>
-						<h2>Telemetria - Datos geográficos</h2>
+						<h2>Telemetría - Datos geográficos</h2>
 						<p>
 							No solo podemos capturar e analizar datos planos. Un ejemplo de datos geográficos es el sistema de telemetria para <b>Assassin's Creed</b> donde se analizan los movimientos e elecciones de los jugadores para representarlos después en el mundo 3D. 
 						</p>
@@ -516,7 +571,7 @@ def compare_dirs(dir1, dir2):
 						</p>
 					</section>
 					<section>
-						<h2>Telemetria - Ejemplo práctico</h2>
+						<h2> Telemetría - Ejemplo práctico</h2>
 						<p class="fragment">
 							Un sistema simple de captura de datos consiste por lo general en:
 						</p>
@@ -537,9 +592,9 @@ def compare_dirs(dir1, dir2):
 					</section>
 
 					<section>
-						<h2>Telemetria - API - addGameplayEvent</h2>
+						<h2>Telemetría - API - addGameplayEvent</h2>
 						<p>
-							Añadir un evento simple al sistema de telemetria:
+							Añadir un evento simple al sistema de telemetría:
 						</p>
 <pre><code>{
     "jsonrpc": "2.0", 
@@ -562,9 +617,9 @@ def compare_dirs(dir1, dir2):
 					</section>
 
 					<section>
-						<h2>Telemetria - API - addBatchedGameplayEvent</h2>
+						<h2> Telemetría - API - addBatchedGameplayEvent</h2>
 						<p>
-							Añadir un conjunto de eventos al sistema de telemetria:
+							Añadir un conjunto de eventos al sistema de telemetría:
 						</p>
 <pre><code>{
     "jsonrpc": "2.0", 
@@ -590,7 +645,7 @@ def compare_dirs(dir1, dir2):
 					</section>
 
 					<section>
-						<h2>Telemetria - API - getGameplayEvent</h2>
+						<h2> Telemetría - API - getGameplayEvent</h2>
 						<p>
 							Devuelve un conjunto de eventos registrados:
 						</p>
@@ -634,6 +689,15 @@ def compare_dirs(dir1, dir2):
 						</ul>
 						<p class="fragment">
 							El esqueleto del <a href="https://github.com/Tragnarion/kinectchallenge2013/tree/master/ToolsInGames/MapEditor" target="_blank">editor</a> es accesible para que podáis usarlo.
+						</p>
+					</section>
+					<section>
+						<h1>Editor de niveles III</h1>
+						<p>
+							Creación de un editor de nivel sencillo pero versátil. Para este ejemplo tomaremos el juego <b>Platformer</b> de la biblioteca de XNA
+						</p>
+						<p>
+							<img src="img/platformer.png">
 						</p>
 					</section>
 				</section>
