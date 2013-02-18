@@ -60,33 +60,48 @@
 					</section>
 					<section>
 						<h3>¿Para quíen?</h3>
-						<p>
-							Para todos!
-							Ejemplos: 
-							 - Building para consolas no sólo es para programación sino tb para arte, sonido y diseño.
-							 - algunos más!
+						<p class="fragment">
+							Las herramientas son para todos. Si alguien dice que no necesita una herramienta o que ya tiene todas las necesarias simplemente aún no ha descubierto donde fallan.
+						</p>
+						<ul>
+							<li class="fragment"><em>Diseño</em> necesita herramientas para analizar el producto o averiguar porqué falla, ...</li>
+							<li class="fragment"><em>Arte</em> ha de conocer el estado de los recursos y si es viable usar más o menos, ...</li>
+							<li class="fragment"><em>Sonido</em> ha de saber si la espacialización es correcta en un nivel, ...</li>
+							<li class="fragment"><em>Programación</em> ha de poder verificar porqué se reinició el juego, ...</li>
+						</ul>
+						<p class="fragment">
+							Las posibilidades son infinitas!
 						</p>
 					</section>
 					<section>
 						<h3>¿Porqué?</h3>
-						<p>
-							Desarrollo propio o productos ya existentes
+						<p class="fragment">
+							Cuando pensamos en crear una herramienta es importante no caer en la tentación de hacerlo todo de 0. ¿Existe ya una herramienta que encaje en mis requerimientos? ¿Es viable usarla? ¿El coste es menor que un desarrollo propio?
+						</p>
+						<p class="fragment">
+							Si no encontramos ninguna herramienta que se ajuste a nuestras necesidades es probable que la tengamos que crear nosotros mismos.
 						</p>
 					</section>
 					<section>
 						<h3>¡Inversión!</h3>
-						<p>
-							Una semana de desarollo puede ahorrar no solo tiempo sino fallos: ejemplos sistema de building consolas Scourge
+						<p class="fragment">
+							La mayoría de las veces es muy difícil demostrar la vitalidad de una herramienta. Es posible que la herramienta tenga un único uso y se use una sóla vez pero que sea muy difícil realizar una tarea a mano.
+						</p>
+						<p class="fragment">
+							Un ejemplo de una herramienta de un sólo uso fue la que desarrollamos para descubir que en un nivel teniamos recursos cargados sin que nos dimos cuenta. Sólo se ejecutó una vez pero se consigió resolver el problema que no parecia tener solución en un principio.
 						</p>
 					</section>
 				</section>
 
-				<!-- Software development tools and tasks tracking -->
+				<!-- Software development tools -->
 				<section>
 					<section>
 						<h2>Herramientas para el desarollo</h2>
-						<p>
-							TODO
+						<p class="fragment">
+							Ante cualquier desarrollo, por pequeño que sea, es importante darnos cuenta de que existe una serie de herramientas esenciales que nos hagan el día día más sencillo.
+						</p>
+						<p class="fragment">
+							Gran parte de los proyectos, sobre todo de software, fracasan por una mala planificación y diseño. Es muy importante que uno se acostumbre a usar:
 						</p>
 						<ul>
 							<li class="fragment"><em>Control de versiones</em></li>
@@ -97,22 +112,78 @@
 					</section>
 
 					<section>
-						<h2>Control de versiones</h2>
-						<p>
-							Hablar sobre CSV y DCSV. Ejemplos de SVN, Perforce, GIT, Kiln y Mercurial
+						<h2>Control de versiones I</h2>
+						<p class="fragment">
+							La regla de oro del desarrollo de software es: <b>Lo que no esta versionado no existe</b>
 						</p>
+						<p class="fragment">
+							Aunque parezca una frase populista tiene mucho sentido. Trabajándo en equipo es importante que cada miembro sepa en lo que esta trabajando ya que entre ellos existen dependencias. Una persona que trabaja en local trabaja fuera del proyecto y representa un peligro:
+						</p>
+						<ul>
+							<li class="fragment"><em>Perdidia de trabajo:</em> un simple fallo de un disco duro nos puede hacer perder semanas de trabajo.</li>
+							<li class="fragment"><em>Conflictos:</em> entre el trabajo de varias personas.</li>
+							<li class="fragment"><em>Bugs:</em> sin un log de cambios es imposible saber porque empezó a fallar un determinado sistema.</li>
+							<li class="fragment"><em>Culpable:</em> a veces es importante poder señalizar al culpable de un cambio.</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Control de versiones II</h2>
+						<p class="fragment">
+							La mayoria de sistemas de control de versiones se pueden catalogar en dos grupos
+						</p>
+						<ul>
+							<li class="fragment"><em>Sistemas de control de versiones centralizado</em></li>
+							<ul>
+								<li class="fragment"><em>Subversion (SVN) o Perforce</em></li>
+							</ul>
+							<li class="fragment"><em>Distribuido o sistema de control decentralizado</em></li>
+							<ul>
+								<li class="fragment"><em>Git, Mercurial (hg) o Kiln</em></li>
+							</ul>
+						</ul>
 					</section>
 					<section>
 						<h2>Planificador de tareas</h2>
-						<p>
-							Hablar sobre Green Hopper, Trello y Trac
+						<p class="fragment">
+							Si no sabemos lo que estamos haciendo seguramente no llegaremos a terminar lo que queremos. La mayoría de herramientas siguen filosofias tales como:
 						</p>
+						<ul>
+							<li class="fragment"><em>Scrum</em></li>
+							<li class="fragment"><em>Kanban</em></li>
+							<li class="fragment"><em>Lean</em></li>
+							<li class="fragment"><em>Extreme Programming</em></li>
+						</ul>
+						<ul>
+							<li class="fragment"><em>Existen herramientas gratuitas como:</em></li>
+							<ul>
+								<li class="fragment"><em>Trello:</em> especial para desarollos usando Kanban</li>
+								<li class="fragment"><em>Trac:</em> con plugins para Scrum</li>
+							</ul>
+							<li class="fragment"><em>O de pago:</em></li>
+							<ul>
+								<li class="fragment"><em>Green Hopper:</em> para Kanban o Scrum</li>
+								<li class="fragment"><em>Hansoft:</em> para Kanban, Scrum, Lean o Extreme Programming</li>
+							</ul>
+						</ul>
 					</section>
 					<section>
 						<h2>Base de datos de bugs/incidencias</h2>
-						<p>
-							Hablar sobre FogBugz y Trac
+						<p class="fragment">
+							Otra herramienta sumamente importante es la que nos ayuda a saber lo que falla. Llegado un punto en el desarrollo es esencial que sepamos que está roto o que partes han de mejorarse para poder llegar a la calidad deseada.
+							Hablar sobre FogBugz, Jira y Trac
 						</p>
+						<ul>
+							<li class="fragment"><em>Existen herramientas gratuitas como:</em></li>
+							<ul>
+								<li class="fragment"><em>Trello:</em> especial para desarollos usando Kanban</li>
+								<li class="fragment"><em>Trac:</em> con plugins para Scrum</li>
+							</ul>
+							<li class="fragment"><em>O de pago:</em></li>
+							<ul>
+								<li class="fragment"><em>Green Hopper:</em> para Kanban o Scrum</li>
+								<li class="fragment"><em>Hansoft:</em> para Kanban, Scrum, Lean o Extreme Programming</li>
+							</ul>
+						</ul>
 					</section>
 					<section>
 						<h2>Integración continua</h2>
@@ -120,45 +191,89 @@
 							Hablar sobre Hudson, Buildbot y Jenkins
 						</p>
 					</section>
+					<section>
+						<h2>GitHub y BitBucket</h2>
+						<p class="fragment">
+							Ambos son servicios que proporcionan repositorios public y privados. Incluyen muchas herramientas en su interfaz web.
+						</p>
+						<p class="fragment">
+							GitHub.com
+						</p>
+						<ul>
+							<li class="fragment"><em>Repositorios public ilimitados</em></li>
+							<li class="fragment"><em>Repositorios privados de pago</em></li>
+							<li class="fragment"><em>Comunidad open-source inmejorable</em></li>
+							<li class="fragment"><em>Sólo soporta GIT</em></li>
+						</ul>
+						<p class="fragment">
+							BitBucket.org
+						</p>
+						<ul>
+							<li class="fragment"><em>Repositorios public ilimitados</em></li>
+							<li class="fragment"><em>Repositorios privados de pago</em></li>
+							<li class="fragment"><em>Comunidad open-source inmejorable</em></li>
+							<li class="fragment"><em>Sólo soporta GIT</em></li>
+						</ul>
+					</section>
 				</section>
 
+				<!-- Building your own tools -->
 				<section>
 					<section>
 						<h2>Herramientas propias</h2>
-						<p>
-							Como empezar una herramienta y la decisión con qué usarla.
+						<p class="fragment">
+							Como empezar una herramienta y qué hemos de tener encuenta!
 						</p>
 						<ul>
 							<li class="fragment"><em>Directas e indirectas</em></li>
 							<li class="fragment"><em>Los datos</em></li>
 							<li class="fragment"><em>Interfaz por commandos</em></li>
+							<li class="fragment"><em>Observar al usuario!</em></li>
 						</ul>
 					</section>
 					<section>
 						<h2>Directas e indirectas</h2>
-						<p>
-							Qué son las tareas directas e indirectas en un desarrollo? Son igual de importantes? Porqué es dificil de demostrar la utilidad de las tareas indirectas.
+						<p class="fragment">
+							En general suelen existir dos tipos de herramientas: directas, aquellas que afectan directamente al desarrollo del producto, e indirectas, aquellas que no están directamente ligadas al desarrollo del producto.
+						</p>
+						<p class="fragment">
+							Las herramientas directas son las más evidentes. Un juego, por ejemplo, requiere de un editor de niveles. En cambio las herramientas indirectas son las que no se ven a simple vsita y suelen caer en el olvido.
 						</p>
 					</section>
 					<section>
 						<h2>Los datos</h2>
-						<p>
-							Hablar sobre tipos de datos y ficheros para el desarrollo. Meta datos pueden almacenar información útil de desarrollo, etc etc
+						<p class="fragment">
+							Los datos que una herramienta trata son vitales. Son datos binarios o no? Los datos nos indican como poder comunicarnos con otras herramientas.
 						</p>
 						<ul>
-							<li class="fragment"><em>Control de versiones</em></li>
-							<li class="fragment"><em>Datos binarios o en texto? (JSON,XML,CSV vs Binarios en producción, meta datos en archivos de desarrollo</em></li>
-							<li class="fragment"><em>Base de datos de bugs/incidencias</em></li>
+							<li class="fragment"><em>Bianrios:</em> fáciles de leer/escribir por un programa. Difícil para un humano.</li>
+							<li class="fragment"><em>JSON, XML:</em> más lentos de leer/escribir pero leible por humanos. Pueden ser usados de metadatos incustrados en los archivos binarios.</li>
+							<li class="fragment"><em>CSV:</em> formato simple pero útil para representar datos sin procesar. Pueden ser importado en hojas de cálculo.</li>
 						</ul>
 					</section>
 					<section>
 						<h2>Interfaz por commandos</h2>
-						<p>
-							Hablar sobre tipos de datos y ficheros para el desarrollo. Meta datos pueden almacenar información útil de desarrollo, etc etc
+						<p class="fragment">
+							Al crear cualquier herramienta tenemos que tener en mente que pueda ser usado en infinidad de ámbitos. Si creamos las herramientas pensando desde el principio de que puedan ser usados por linea de comandos podremos integrarlas en otros systemas. Incluso pueden ser usados por otras herramientas.
 						</p>
+					</section>
+					<section>
+						<h2>Observar al usuario!</h2>
+						<p class="fragment">
+							La mayoria de las herramientas nacen de la necesidad de un individuo. En muchas ocasiones el individuo pide una determinada funcionalidad que en realidad no se ajusta a sus necesidades. Es importante realizar un análisis de conocimiento para poder descubir qué realmente requiere la persona que nos pide una herramienta.
+						</p>
+						<p class="fragment">
+							Para poder realizar un análisis nos centraremos en tres tipos de conocimiento:
+						</p>
+						<ul>
+							<li class="fragment"><em>Explícito:</em> conocimiento del que somos totalmente concientes. Representa una fracción del conocimiento.</li>
+							<li class="fragment"><em>Implícito:</em> conocimiento del que somos conciente pero que hemos adquirido como los hábitos.</li>
+							<li class="fragment"><em>Tácito:</em> totalmente inconciente. Muy difícil de registrar.</li>
+						</ul>
 					</section>
 				</section>
 
+				<!-- Building your own tools -->
 				<section>
 					<section>
 						<h2>Caso prácticos</h2>
@@ -168,7 +283,8 @@
 						<ul>
 							<li class="fragment"><em>Scripts por lotes</em></li>
 							<li class="fragment"><em>Python</em></li>
-							<li class="fragment"><em>Ejemplo de tools para un juego de plataformas</em></li>
+							<li class="fragment"><em>Telemetria</em></li>
+							<li class="fragment"><em>Editor de niveles</em></li>
 						</ul>
 					</section>
 				</section>
@@ -287,239 +403,248 @@ GOTO:EOF</code></pre>
 				</section>
 
 				<section>
-					<h2>Works in Mobile Safari</h2>
-					<p>
-						Try it out! You can swipe through the slides and pinch your way to the overview.
-					</p>
-				</section>
-
-				<section>
-					<h2>Marvelous Unordered List</h2>
-					<ul>
-						<li>No order here</li>
-						<li>Or here</li>
-						<li>Or here</li>
-						<li>Or here</li>
-					</ul>
-				</section>
-
-				<section>
-					<h2>Fantastic Ordered List</h2>
-					<ol>
-						<li>One is smaller than...</li>
-						<li>Two is smaller than...</li>
-						<li>Three!</li>
-					</ol>
-				</section>
-
-				<section data-markdown>
-					<script type="text/template">
-						## Markdown support
-
-						For those of you who like that sort of thing. Instructions and a bit more info available [here](https://github.com/hakimel/reveal.js#markdown).
-
-							<section data-markdown>
-							  ## Markdown support
-
-							  For those of you who like that sort of thing.
-							  Instructions and a bit more info available [here](https://github.com/hakimel/reveal.js#markdown).
-							</section>
-					</script>
-				</section>
-
-				<section id="transitions">
-					<h2>Transition Styles</h2>
-					<p>
-						You can select from different transitions, like: <br>
-						<a href="?transition=cube#/transitions">Cube</a> -
-						<a href="?transition=page#/transitions">Page</a> -
-						<a href="?transition=concave#/transitions">Concave</a> -
-						<a href="?transition=zoom#/transitions">Zoom</a> -
-						<a href="?transition=linear#/transitions">Linear</a> -
-						<a href="?transition=fade#/transitions">Fade</a> -
-						<a href="?transition=none#/transitions">None</a> -
-						<a href="?#/transitions">Default</a>
-					</p>
-				</section>
-
-				<section id="themes">
-					<h2>Themes</h2>
-					<p>
-						Reveal.js comes with a few themes built in: <br>
-						<a href="?theme=sky#/themes">Sky</a> -
-						<a href="?theme=beige#/themes">Beige</a> -
-						<a href="?theme=simple#/themes">Simple</a> -
-						<a href="?theme=serif#/themes">Serif</a> -
-						<a href="?theme=night#/themes">Night</a> -
-						<a href="?#/themes">Default</a>
-					</p>
-					<p>
-						<small>
-							* Theme demos are loaded after the presentation which leads to flicker. In production you should load your theme in the <code>&lt;head&gt;</code> using a <code>&lt;link&gt;</code>.
-						</small>
-					</p>
-				</section>
-
-				<section>
-					<section data-state="alert">
-						<h2>Global State</h2>
-						<p>
-							Set <code>data-state="something"</code> on a slide and <code>"something"</code>
-							will be added as a class to the document element when the slide is open. This lets you
-							apply broader style changes, like switching the background.
+					<section>
+						<h2>Python I</h2>
+						<p class="fragment">
+							Python es un lenguaje de programación dinámico interpretae muy usado en el desarrollo de videojuegos. Se usa especialmente para crear herramientas.
 						</p>
-						<a href="#" class="image navigate-down">
-							<img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
-						</a>
+						<p class="fragment">
+							Las ventajas de python para el desarrollo de herramientas son:
+						</p>
+						<ul>
+							<li class="fragment"><em>Orientado a objetos</em></li>
+							<li class="fragment"><em>Imperativo:</em> Programación en términos de estados y sus cambios</li>
+							<li class="fragment"><em>Funcional:</em> Lambdas o yields</li>
+							<li class="fragment"><em>Distribución de paquetes:</em> El índice de paquetes (PyPi)</li>
+							<li class="fragment"><em>Cross-Platform</em></li>
+						</ul>
 					</section>
-					<section data-state="blackout">
-						<h2>"blackout"</h2>
-						<a href="#" class="image navigate-down">
-							<img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
-						</a>
+					<section>
+						<h2>Python II</h2>
+						<p class="fragment">
+							Pero ¿porqué es tan usado en videojuegos?
+						</p>
+						<p class="fragment">
+							Básicamente porque es multiplataforma y favorece al desarrollo rápido debido a que si se necesita algo habrá un paquete de python qye lo haga. Y sino se crea. En Python tenemos al alcanze de un click:
+						</p>
+						<ul>
+							<li class="fragment"><em>Qt:</em> mediante PySide (oficial) o PyQt</li>
+							<li class="fragment"><em>Web:</em> mediante paquetes tales Web.Py (Aron Schwartz, Reddit), Twisted Matrix e otros</li>
+							<li class="fragment"><em>Client Requests:</em> Requests, ...</li>
+							<li class="fragment"><em>Y mucho más:</em> <a href="http://pypi.python.org/pypi?%3Aaction=browse">PyPi</a><img src="img/pypi.png"></li>
+						</ul>
 					</section>
-					<section data-state="soothe">
-						<h2>"soothe"</h2>
-						<a href="#" class="image navigate-next">
-							<img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Up arrow" style="-webkit-transform: rotate(-90deg);">
-						</a>
+					<section>
+						<h2>Python III</h2>
+						<p class="fragment">
+							Vamos aver un ejemplo real. Nos encontramos en el caso de tener que comparar dos rutas y buscar si en ambas hay archivos duplicados.
+						</p>
+						<p class="fragment">
+							Decidimos de crear una herramienta por el simple hecho de que se podría automatizar el proceso de verificar que ambas rutas no contuviesen elementos duplicados y resultaba más sencillo que usar un programa de comparación.
+						</p>
 					</section>
-				</section>
+					<section>
+						<h2>Python IV</h2>
+						<pre><code>def walk_dir(dir):
+    for f in os.listdir(dir):
+        fullpath = os.path.join(dir,f)
+        if os.path.isdir(fullpath) and not os.path.islink(fullpath):
+            for x in walk_dir(fullpath):
+                yield x
+        else:
+            yield fullpath
 
-				<section data-state="customevent">
-					<h2>Custom Events</h2>
-					<p>
-						Additionally custom events can be triggered on a per slide basis by binding to the <code>data-state</code> name.
-					</p>
-					<pre><code contenteditable style="font-size: 18px; margin-top: 20px;">Reveal.addEventListener( 'customevent', function() {
-	console.log( '"customevent" has fired' );
-} );
-					</code></pre>
-				</section>
-
-				<section>
-					<h2>Clever Quotes</h2>
-					<p>
-						These guys come in two forms, inline: <q cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
-						The nice thing about standards is that there are so many to choose from</q> and block:
-					</p>
-					<blockquote cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
-						For years there has been a theory that millions of monkeys typing at random on millions of typewriters would
-						reproduce the entire works of Shakespeare. The Internet has proven this theory to be untrue.
-					</blockquote>
-				</section>
-
-				<section>
-					<h2>Pretty Code</h2>
-					<pre><code contenteditable>
-function linkify( selector ) {
-  if( supports3DTransforms ) {
-
-    var nodes = document.querySelectorAll( selector );
-
-    for( var i = 0, len = nodes.length; i &lt; len; i++ ) {
-      var node = nodes[i];
-
-      if( !node.className ) ) {
-        node.className += ' roll';
-      }
-    };
-  }
-}
-					</code></pre>
-					<p>Courtesy of <a href="http://softwaremaniacs.org/soft/highlight/en/description/">highlight.js</a>.</p>
-				</section>
-
-				<section>
-					<h2>Intergalactic Interconnections</h2>
-					<p>
-						You can link between slides internally,
-						<a href="#/2/3">like this</a>.
-					</p>
+def compare_dirs(dir1, dir2):
+    for file1 in walk_dir(dir1):
+        file1_base = os.path.basename(file1).lower()
+        for file2 in walk_dir(dir2):
+            file2_base = os.path.basename(file2).lower()
+            if file1_base == file2_base:
+                print("Duplicated file found: %s\n - %s\n - %s"%(file1_base, file1, file2))</code></pre>
+                		<p class="fragment">
+							Vamos a explicar las partes importantes del código.
+						</p>
+					</section>
+					<section>
+						<h2>Python IV</h2>
+						<p class="fragment">
+							Lo primero que vemos es que en vez de usar la palabra clave <b>return</b> usamos <b>yield</b>. La idea es que cuando llegamos a un yield devolvemos el valor pero la ejecución no termina, sino que la siguiente vez que ejecutemos la función seguimos desde el mismo sitio. Lo que hemos hecho es usar un <b>generador</b> y que se suele usar cuando se tiene una gran cantidad de datos potenciales que se van a leer una sola vez.
+						</p>
+						<pre><code>for x in walk_dir(fullpath):
+	yield x</code></pre>
+					</section>
 				</section>
 
 				<section>
 					<section>
-						<h2>Fragmented Views</h2>
-						<p>Hit the next arrow...</p>
-						<p class="fragment">... to step through ...</p>
-						<ol>
-							<li class="fragment"><code>any type</code></li>
-							<li class="fragment"><em>of view</em></li>
-							<li class="fragment"><strong>fragments</strong></li>
-						</ol>
-
-						<aside class="notes">
-							This slide has fragments which are also stepped through in the notes window.
-						</aside>
+						<h2>Telemetria - Heat Maps I</h2>
+						<p class="fragment">
+							Las herramientas telemétricas son herramientas indirectas que se suelen olvidar.
+						</p>
+						<p class="fragment">
+							Un heatmap es una imagen sobrepuesta encima de otra que representa un entorno. La imagen sobrepuesta contiene marcas de <b>calor</b> para poder visualizar distintos hechos.
+						</p>
+						<p class="fragment">
+							La siguiente imagen representa un mapa de muertes del juego <i>Transformers: War for Cybertron</i>. En ella podemos observar en que puntos del mapa se han producido muertes.
+							<img src="img/DeathHeatmap.png">
+						</p>
 					</section>
 					<section>
-						<h2>Fragment Styles</h2>
-						<p>There's a few styles of fragments, like:</p>
-						<p class="fragment grow">grow</p>
-						<p class="fragment shrink">shrink</p>
-						<p class="fragment roll-in">roll-in</p>
-						<p class="fragment fade-out">fade-out</p>
-						<p class="fragment highlight-red">highlight-red</p>
-						<p class="fragment highlight-green">highlight-green</p>
-						<p class="fragment highlight-blue">highlight-blue</p>
+						<h2>Telemetria - Heat Maps II</h2>
+						<p>
+							Otro ejemplo del mismo juego es el mapa de 'kills'.
+						</p>
+						<p>
+							 Si observamos atentamente veremos que casi no hay diferencias pero esas diferencias son de vital importancia para el diseñador de niveles ya que nos puede mostrar que el usario no esta jugando como esperabamos.
+							<img src="img/KillHeatmap.png">
+						</p>
+					</section>
+					<section>
+						<h2>Telemetria - Heat Maps III</h2>
+						<p>
+							Combinando ambos mapas podemos crear un mapa balanceado (normalizado en nuestro caso). 
+							<img src="img/NormalizedBalanceHeatmap.png">
+						</p>
+					</section>
+					<section>
+						<h2>Telemetria - Datos geográficos</h2>
+						<p>
+							No solo podemos capturar e analizar datos planos. Un ejemplo de datos geográficos es el sistema de telemetria para <b>Assassin's Creed</b> donde se analizan los movimientos e elecciones de los jugadores para representarlos después en el mundo 3D. 
+						</p>
+						<p>
+							<img src="img/parachuting-1024x800.png">
+						</p>
+					</section>
+					<section>
+						<h2>Telemetria - Ejemplo práctico</h2>
+						<p class="fragment">
+							Un sistema simple de captura de datos consiste por lo general en:
+						</p>
+						<ul>
+							<li class="fragment"><em>Servidor:</em> el servidor recibe los eventos de captura y los proceso.</li>
+							<ul>
+								<li class="fragment">Creado usando Web.Py</li>
+							</ul>
+							<li class="fragment"><em>Base de datos:</em> contiene todos los datos que se hayan enviado.</li>
+							<ul>
+								<li class="fragment">SQLite3 para desarrollos internos o PostgreSQL o MongoDB (NoSQL) si se quiere usar en producción.</li>
+							</ul>
+							<li class="fragment"><em>API:</em> API de acceso para poder comunicarse con el servidor.</li>
+							<ul>
+								<li class="fragment">JSON-RPC por su facilidad de implementación.</li>
+							</ul>
+						</ul>
+					</section>
+
+					<section>
+						<h2>Telemetria - API - addGameplayEvent</h2>
+						<p>
+							Añadir un evento simple al sistema de telemetria:
+						</p>
+<pre><code>{
+    "jsonrpc": "2.0", 
+    "method": "addGameplayEvent", 
+    "params": {
+        "type": 1, 
+        "tag": "playername", 
+        "loc": "location", 
+        "data": {
+            "timestamp": 12569537329,
+            "content": "[The content goes here...]"
+        }
+    },
+    "id": 1
+}</code></pre>
+						<p>
+							Respuesta:
+						</p>
+<pre><code>{"jsonrpc": "2.0", "result": [True|False], "id": 1}</code></pre>
+					</section>
+
+					<section>
+						<h2>Telemetria - API - addBatchedGameplayEvent</h2>
+						<p>
+							Añadir un conjunto de eventos al sistema de telemetria:
+						</p>
+<pre><code>{
+    "jsonrpc": "2.0", 
+    "method": "addBatchedGameplayEvent", 
+    "params": {
+        "type": 1, 
+        "tag": "playername",
+        "loc": "location", 
+        "data": 
+        [
+            {
+                "timestamp": 12569537329,
+                "content": "[The content goes here...]"
+            }
+        ]
+    }, 
+    "id": 1
+}</code></pre>
+						<p>
+							Respuesta:
+						</p>
+<pre><code>{"jsonrpc": "2.0", "result": [True|False], "id": 1}</code></pre>
+					</section>
+
+					<section>
+						<h2>Telemetria - API - getGameplayEvent</h2>
+						<p>
+							Devuelve un conjunto de eventos registrados:
+						</p>
+<pre><code>{
+    "jsonrpc": "2.0", 
+    "method": "getGameplayEvent", 
+    "params": 
+    {
+        "type": 1, 
+        "tag": "playername"
+    },
+    "id": 1
+}</code></pre>
+						<p>
+							Respuesta:
+						</p>
+<pre><code>{"jsonrpc": "2.0", "result": [{}], "id": 1}</code></pre>
+					</section>
+
+				</section>
+
+				<section>
+					<section>
+						<h1>Editor de niveles I</h1>
+						<p>
+							Creación de un editor de nivel sencillo pero versátil. Para este ejemplo tomaremos el juego <b>Platformer</b> de la biblioteca de XNA
+						</p>
+						<p>
+							<img src="img/editor.png">
+						</p>
+					</section>
+					<section>
+						<h1>Editor de niveles II</h1>
+						<p>
+							Para poder empezar a crear el editor hemos de saber que funcionalidades debamos añadir:
+						</p>
+						<ul>
+							<li class="fragment"><em>Crear mapas:</em> el editor ha de ser capaz de leer y escribir mapas que el juego pueda entender.</li>
+							<li class="fragment"><em>Usar todos los recursos del juego:</em> tenemos que usar los mismos recursos que usaremos en el juego.</li>
+							<li class="fragment"><em>Visualizar Telemetría:</em> El editor ha de ser capaz de visualizar datos telemétricos</li>
+						</ul>
+						<p class="fragment">
+							El esqueleto del <a href="https://github.com/Tragnarion/kinectchallenge2013/tree/master/ToolsInGames/MapEditor" target="_blank">editor</a> es accesible para que podáis usarlo.
+						</p>
 					</section>
 				</section>
 
 				<section>
-					<h2>Spectacular image!</h2>
-					<a class="image" href="http://lab.hakim.se/meny/" target="_blank">
-						<img width="320" height="299" src="http://s3.amazonaws.com/hakim-static/portfolio/images/meny.png" alt="Meny">
-					</a>
+					<h1>Preguntas</h1>
 				</section>
 
 				<section>
-					<h2>Export to PDF</h2>
-					<p>Presentations can be <a href="https://github.com/hakimel/reveal.js#pdf-export">exported to PDF</a>, below is an example that's been uploaded to SlideShare.</p>
-					<iframe id="slideshare" src="http://www.slideshare.net/slideshow/embed_code/13872948" width="455" height="356" style="margin:0;overflow:hidden;border:1px solid #CCC;border-width:1px 1px 0;margin-bottom:5px" allowfullscreen> </iframe>
-					<script>
-						document.getElementById('slideshare').attributeName = 'allowfullscreen';
-					</script>
-				</section>
-
-				<section>
-					<h2>Take a Moment</h2>
-					<p>
-						Press b or period on your keyboard to enter the 'paused' mode. This mode is helpful when you want to take distracting slides off the screen
-						during a presentation.
-					</p>
-				</section>
-
-				<section>
-					<h2>Stellar Links</h2>
-					<ul>
-						<li><a href="https://github.com/hakimel/reveal.js">Source code on GitHub</a></li>
-						<li><a href="http://hakim.se/projects/reveal-js">Leave feedback on my site</a></li>
-						<li><a href="http://twitter.com/hakimel">Follow me on Twitter</a></li>
-					</ul>
-				</section>
-
-				<section>
-					<h2>It's free</h2>
-					<p>
-						reveal.js and <a href="http://www.rvl.io">rvl.io</a> are entirely free but if you'd like to support the projects you can donate below.
-						Donations will go towards hosting and domain costs.
-					</p>
-					<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
-						<input type="hidden" name="cmd" value="_donations">
-						<input type="hidden" name="business" value="hakim.elhattab@gmail.com">
-						<input type="hidden" name="lc" value="US">
-						<input type="hidden" name="item_name" value="reveal.js / rvl.io">
-						<input type="hidden" name="no_note" value="0">
-						<input type="hidden" name="currency_code" value="USD">
-						<input type="hidden" name="bn" value="PP-DonationsBF:btn_donate_LG.gif:NonHostedGuest">
-						<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-					</form>
-				</section>
-
-				<section>
-					<h1>THE END</h1>
-					<h3>BY Hakim El Hattab / hakim.se</h3>
+					<h1>Grácias por esuchar</h1>
+					<h3>Moritz Wundke</h3>
 				</section>
 
 			</div>
