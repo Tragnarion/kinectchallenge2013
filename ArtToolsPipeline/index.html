@@ -1,0 +1,665 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Kinect Challenge 2013 - Herramientas para la creación de recursos de arte y pipelines</title>
+
+		<meta name="description" content="Kinect Challenge 2013 - Herramientas para la creación de recursos de arte y pipelines">
+		<meta name="author" content="Miguel Angel Carrillo">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/theme/default.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+		<script>
+			document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<!-- Title Slide -->
+				<section>
+					<h1>Kinect Challenge 2013</h1>
+					<h3>Herramientas para la creación de recursos gráficos<br>y pipelines de trabajo</h3>
+					<p>
+                    <br>
+                   <div align="center"> <table align="center">
+                    <tr><td>
+						<small>Miguel Ángel Carrillo</small>  </td><td><small>- Lead Artist <a href="http://www.tragnarion.com/" target="_blank">Tragnarion Studios</a></small></td>
+                        </tr><tr><td></td><td>
+						<small>- Profesor <a href="http://www.grupofleming.com/edb/index.php" target="_blank">Centro docente EDIB</a></small>
+				</td></tr></table>		
+					</div>
+                    </p>
+					<p>
+						<small>
+						</small>
+					</p>
+				</section>
+
+				<section>
+				 <div align="left">
+                		<h2>Sumario</h2><br>
+						<p><li class="fragment"><em>Introducción</em></p>
+							<small>Breve introducción del autor y su carrera en el desarrollo de videojuegos.</small></li>
+						
+                        <p><li class="fragment"><em>Recursos gráficos</em></p>
+							<small>Qué son los recursos gráficos y que tipos nos podemos encontrar.</small></li>
+						<p><li class="fragment"><em>Organización del departamento de arte</em><br>
+							<small>Organización del departamento de arte en una producción Next-Gen, funciones e interacciones.</small>
+						</p>
+                        <p><li class="fragment"><em>Ejemplos de pipelines de producción</em><br>
+							<small>Prácticas habituales en la creación de contenidos de arte. Ejemplos prácticos.</small>
+						</p>
+						<p><li class="fragment"><em>Herramientas habituales</em><br>
+							<small>Herramientas más usadas según su funcionalidad.</small>
+						</p>
+				</div>		
+					</section>
+
+
+				<!-- Introduction Slide -->
+				
+            <section>     
+                <section>
+						
+						<p>
+							 <div align="center"> <table align="center">
+                    <tr><td>
+						Miguel Ángel Carrillo &nbsp;&nbsp;&nbsp; <br>
+                        <small><a href="http://www.miguelangelcarrillo.com" target="_blank">www.miguelangelcarrillo.com</a>&nbsp;&nbsp;&nbsp;</small>
+                         </td>
+                        
+                        
+                        <td><small>Lead Artist<br>Tragnarion Studios<br>September 2003 - Present<br><br></small></td>
+                        </tr><tr>
+                        
+                        <td></td><td>
+						<small>Lead Artist<br>Cryo Networks (Cryo Spagne)<br>October 2001 - October 2002<br><br></small>
+						</td></tr>
+                         <td></td><td>
+						<small>Senior Artist<br>Dinamic Multimedia<br>April 1999 - September 2001<br><br></small>
+						</td></tr>
+                		 <td></td><td>
+						<small>Artist, Programmer and Game Designer<br>Island Dream<br>September 1989 - May 2001<br><br></small>
+						</td></tr>
+                	 <td></td><td>
+						<small>Artist and Project Manager<br>Hammer Technologies<br>September 1998 - March 1999<br><br></small>
+						</td></tr>
+                 <td></td><td>
+						<small>Artist and Game Designer<br>Cage Soft<br>April 1997 - June 1998<br><br></small>
+						</td></tr>
+                         <td></td><td>
+						<small>Artist and Game Designer<br>Eco Games<br>August 1994 - July 1996<br><br></small>
+						</td></tr>
+                
+                
+                
+                </table>		
+					</div>
+					</section>
+                <section>
+						
+						<p>
+							 <div align="center"> <table align="center">
+                    <tr><td>
+						Miguel Ángel Carrillo &nbsp;&nbsp;&nbsp; <br>
+                        <small><a href="http://www.miguelangelcarrillo.com" target="_blank">www.miguelangelcarrillo.com</a>&nbsp;&nbsp;&nbsp;</small>
+                         </td>
+                        
+                        <td><small>Motores gráficos avanzados<br>EDIB (Palma)<br>October 2012 - Present<br><br></small></td>
+                        </tr><tr>
+                        
+                        <td></td><td>
+						<small>Texturización avanzada de modelos<br>EDIB (Palma)<br>October 2011  - Present<br><br></small>
+						</td></tr>
+                         <td></td><td>
+						<small>Introducción a motores gráficos<br>EDIB (Palma)<br>October 2011  - Present<br><br></small>
+						</td></tr>
+                		 <td></td><td>
+						<small>Tratamiento de imagen digital<br>EDIB (Palma)<br>October 2010  - Present<br><br></small>
+						</td></tr>
+                	 <td></td><td>
+						<small>Introduccion a la animación 2D y 3D<br>y tratamiento digital de imagenes<br>Escuela de Artes y Oficios (Palma)<br>May 1995 and February-March 1996<br><br></small>
+						</td></tr>
+                
+                
+                </table>		
+					</div>
+					</section>
+           
+            </section>    
+                
+                
+                <section>
+					<section>
+						<h2>recursos gráficos</h2>
+						<p class="fragment">
+							Recursos gráficos son todos aquellos elementos visuales que se necesitan para la realización de un proyecto digital.<br> Ya sea un videojuego, una aplicación multimedia, o cualquier tipo de programa que requiera de algún soporte gráfico.
+						</p>
+						
+					</section>
+					<section>
+						<h3>Tipos de gráficos</h3>
+						<p>
+							La variedad de recursos gráficos que se pueden requerir para una aplicación o videojuego es enorme pero se podrían clasificar en las siguientes categorias:
+						</p>
+                       <br>
+						<ul>
+							<li class="fragment"><em>Personajes:</em> &nbsp;&nbsp;elementos principales de interacción</li>
+							<li class="fragment"><em>Entornos:</em> &nbsp;&nbsp;el decorado que viste los niveles</li>
+                            <li class="fragment"><em>Visual FXs:</em> &nbsp;&nbsp;los efectos especiales</li>
+                            <li class="fragment"><em>Animaciones:</em> &nbsp;&nbsp;los elementos móviles</li>
+							<li class="fragment"><em>Menús:</em> &nbsp;&nbsp;menús de navegación y control de opciones</li>
+							<li class="fragment"><em>Interfaces:</em>  &nbsp;&nbsp;información al usuario y su presentación</li>
+                            <li class="fragment"><em>Marketing:</em>  &nbsp;&nbsp;material gráfico para promoción</li>
+						</ul>
+						
+					</section>
+					<section>
+						<h3> Personajes (Characters)</h3>
+						<p class="fragment">
+							Los personajes son los principales elementos con los que interactuamos en un juego. Dependiendo de la aplicación, el engine usado o el estilo pueden variar muchísimo, y su proceso de creación dependerá absolutamente de ello.
+						</p>
+						
+					</section>
+					<section>
+							<img src="img/funciones/personajes.jpg" width="2000" height="1200">
+						
+					</section>
+                    <section>
+						<h3> Entornos (Environments)</h3>
+						<p class="fragment">
+							Los entornos son los decorados por los que se mueven nuestros personajes, los niveles por los que puede interactuar. Como sucede con los personajes, dependen del estilo o aplicación elegida a la hora de su creación.
+						</p>
+						</section>
+                     <section>
+							<img src="img/funciones/entorno_001.jpg" width="1188" height="860">
+						
+					</section>
+                     <section>
+						<img src="img/funciones/entorno_002.jpg" width="1200" height="868">
+					</section>
+                     <section>
+						<h3> Visual FXs</h3>
+						<p class="fragment">
+							Los efectos especiales visuales llenan los entornos y potencian las acciones y el ritmo del juego. Son como la sal en nuestras comidas, sin ella, todo queda "soso"!
+						</p>
+						</section>
+                     <section>
+							<img src="img/funciones/fx_2.jpg" width="1920" height="1080">
+						
+					</section>
+                     <section>
+						<h3> Animaciones</h3>
+						<p class="fragment">
+							Todos los elementos moviles de nuestra aplicación requieren de animación. Habitualmente se preparan en función de las necesidades de interactividad. En algunos casos, motores de física se encargan de llevar a cabo estas labores, pero lo común es que los animadores preparen laboriosamente todos los ciclos necesarios.
+						</p>
+					</section>
+					<section>
+							<img src="img/funciones/animacion.jpg" width="1920" height="1040">
+						
+					</section>
+                     <section>
+						<h3> Menús</h3>
+						<p class="fragment">
+							La complejidad que puede llegar a necesitar, la creación de menús, hace que por si solos se les pueda considerar una categoría. Artistas especializados unen sus habilidades con programadores para completar la funcionalidad
+						</p>
+					</section>
+					<section>
+							<img src="img/funciones/menus.jpg" width="2500" height="530">
+						
+					</section>
+                     <section>
+						<h3> Interfaces</h3>
+						<p class="fragment">
+							Son los elementos adicionales que nos aportan información o mecánicas de interactividad con la aplicación o el juego. La síntesis de datos y la presentación acorde con el estilo elegido son fundamentales para un buen funcionamiento de los interfaces.
+						</p>
+						</section>
+                     <section>
+							<img src="img/funciones/09 - Pacientes - crear terapia - Sesiones_V2.bmp">
+						
+					</section>
+                     <section>
+						<h3> Marketing</h3>
+						<p class="fragment">
+							Tarde o temprano, la promoción del producto requerirá de material gráfico adicional: Posters, caratulas, screenshots, anuncios, y toda clase de arte promocional.
+						</p>
+						</section>
+                     <section>
+							<img src="img/funciones/marketing.jpg" width="1500" height="1000">
+						
+					</section>
+					<section>
+							<img src="img/programas/aftereffects.jpg" width="1500" height="1000">
+						
+					</section>
+					
+				</section>
+
+		<!-- departamento de arte -->
+			<section>
+					<section>
+						<h2>organización del Dpto de Arte</h2>
+						<p class="fragment">
+							Dependiendo de la complejidad del proyecto o la logística de la empresa, un departamento de arte puede constar desde uno, a cientos de artistas.
+                           
+						</p>
+						<p class="fragment">
+							Una distribución típica en un departamento de arte de medio tamaño puede ser el siguiente:
+                      	</p>
+					
+					</section>
+					<section>
+					<img src="img/001_Equipo de arte.jpg" width="1488" height="1188">
+                   </section>
+                   
+                   <section>
+						<h2>Funciones del Dpto de Arte</h2>
+						<p>
+							Como hemos visto, podemos clasificar a los artistas (o sus funciones), en: Artistas 3D, Artistas Técnicos y Artistas 2D.<br>Veamos ahora sus principales funciones en la creación de recursos...
+                           
+						</p>
+						
+					</section>
+					<section>
+					<img src="img/002_tareas habituales 3D.jpg" width="1488" height="1188">
+                   </section>
+                   <section>
+					<img src="img/003_tareas habituales technical artists.jpg" width="1488" height="1188">
+                   </section>
+                   <section>
+					<img src="img/004_tareas habituales 2D.jpg" width="1488" height="1188">
+                   </section>
+				 <section>
+						<h2>interacciones del Dpto de Arte</h2>
+						<p>
+							Veamos ahora un ejemplo de como interactuan los diferentes artistas sobre un elemento particular dentro de un juego, en este caso un prop...
+                           
+						</p>
+						
+					</section>
+					<section>
+					<img src="img/001_estructura de un Prop.jpg" width="1488" height="1188">
+                   </section>
+                    <section>
+						<h2>interacciones del Dpto de Arte</h2>
+						<p>
+							Ahora un ejemplo de como interactuan los diferentes artistas sobre un elemento más complejo, como por ejemplo, un personaje principal de nuestro juego...
+                           
+						</p>
+						
+					</section>
+					<section>
+					<img src="img/002_estructura de un personaje.jpg" width="1488" height="1188">
+                   </section>
+		</section>
+
+				<!-- Pipelines -->
+				<section>
+					
+                    <section>
+						<h2>Ejemplos de pipelines de producción</h2>
+						<p class="fragment">
+							Los pipelines de producción son protocolos de desarrollo adaptados a la creación de recursos gráficos, en función de la calidad o tecnología requerida en cada proyecto.
+                         <br>  <br>                             
+						</p>
+						<li class="fragment">
+							Con la llegada de las consolas de la actual generación se empezaron a requerir pipelines de creación bastante complejos, debido a las mejoras gráficas que pueden soportar estos dispositivos. <br>  <br>              
+                      	</li>
+                       <li class="fragment">
+							Con ellos, la especialización de los artistas y el numero de herramientas necesarias, para llevar a cabo el proceso aumentan considerablemente, si comparamos con una producción de la generación anterior.
+                      	</li>
+					
+					</section>
+                    
+                <section>
+						<h2>Ejemplos de pipelines de producción</h2> <br>  <br>          
+						<p >
+							Veamos ahora un ejemplo de pipeline de creación de un personaje para un juego en una produccion Next-Gen...
+                         <br>  <br>                             
+						</p>
+						
+					
+					</section>
+                    <section>
+                    <img src="img/003_pipeline_objetos.jpg" width="1500" height="1299">
+					
+                   </section>
+                    
+                      <section>
+						<h2>Ejemplos de pipelines de producción</h2> <br>  <br>          
+						<p >
+							Ahora veremos el resultado práctico de los diferentes procesos aplicados a un elemento de un juego, en este caso una carretilla para una mina, en un juego de aventuras...
+                         <br>  <br>                             
+						</p>
+					</section>
+                    <section>
+                    
+					<img src="img/carretilla/001_carretilla_pipeline.jpg" width="1581">
+                   </section>
+                    <section>
+                    
+					<img src="img/carretilla/002_carretilla_pipeline.jpg" width="1581" height="903">
+                   </section>
+                    <section>
+                    
+					<img src="img/carretilla/003_carretilla_pipeline.jpg" width="1581" height="903">
+                   </section>
+                    <section>
+                    
+					<img src="img/carretilla/004_carretilla_pipeline.jpg" width="1581" height="903">
+                   </section>
+                    <section>
+                    
+					<img src="img/carretilla/005_carretilla_pipeline.jpg" width="1581" height="903">
+                   </section>
+                    <section>
+                    
+					<img src="img/carretilla/006_carretilla_pipeline.jpg" width="1581" height="903">
+                   </section>
+                  
+                   <section>
+						<h2>Ejemplos de pipelines de producción</h2> <br>  <br>          
+						<p >
+							Y ahora veremos el resultado práctico de los diferentes procesos aplicados a un personaje de videojuego.
+                            En esta ocasión el proceso de pintado de las texturas difusas se ha llevado a cabo directamente sobre el modelo 3D, para posteriormente proyectarlo sobre la textura 2D...
+                         <br>  <br>                             
+						</p>
+					</section>
+                   <section>
+                   <small>modelado en alta (Zbrush)</small>
+                    <img src="img/personaje/001_personaje.jpg" width="1929" height="1161">
+					
+                   </section>
+                    <section>
+                    <small>pintado de la imagen difusa (Zbrush)</small>
+                    <img src="img/personaje/002_personaje.jpg" width="1929" height="1161">
+					
+                   </section>
+                    <section>
+                    <small>retopologia (3Dmax)</small>
+                    <img src="img/personaje/003_personaje.jpg" width="1929" height="1161">
+					
+                   </section>
+                    <section>
+                    <small>modelo de baja con normal aplicado (Unreal 3)</small>
+                    <img src="img/personaje/004_personaje.jpg" width="1929" height="1161">
+				
+                   </section>
+                    <section>
+                    <small>modelo de baja con texturas aplicadas (Unreal 3)</small>
+                    <img src="img/personaje/005_personaje.jpg" width="1929" height="1161">
+					
+                   </section>
+                         
+				</section>
+
+
+				<!--  herramientas -->
+			<section>
+                <section>
+						<h3>herramientas gráficas habituales</h3>
+						<p class="fragment">
+							La gran variedad de procesos necesarios para la creación de graficos, hace necesario el uso correcto de las herramientas idoneas a cada paso. Veamos una relación de herramientas habituales en función del proceso realizado:
+						</p>
+                       <br>
+						<ul>
+							<li class="fragment"><em>Modelado en Alta</em></li>
+							<li class="fragment"><em>Pintado en Alta</em></li>
+                            <li class="fragment"><em>Retopología</em></li>
+                            <li class="fragment"><em>Mapeado de UVs</em></li>
+							<li class="fragment"><em>Proyecciones</em></li>
+							<li class="fragment"><em>Texturas de soporte</em></li>
+                            <li class="fragment"><em>Texturizacion 2D</em></li>
+                            <li class="fragment"><em>Creación de Shaders</em></li>
+                            <li class="fragment"><em>Animación</em></li>
+						</ul>
+						
+					</section>
+					<section>
+						<h3> Modelado en Alta</h3>
+						<p class="fragment">
+							El modelado en alta de recursos podría categorizarse por orgánico (personajes y criaturas), mecánico (armas y props variados), y tejidos (telas y vestuarios). Los programas más habituales son:
+                            <br><br>
+                           <li class="fragment"><em> Modelado orgánico: Zbrush, MudBox</em></li>
+                           <li class="fragment"><em> Modelado mecánico: 3DMax, Maya</em></li>
+                           <li class="fragment"><em>Modelado de tejidos: Marvelous Design</em></li>
+						</p>
+						
+					</section>
+                    
+					<section>
+                    <img src="img/programas/esquina.jpg" width="1920" height="1164">
+					</section>
+					<section>
+                    <img src="img/programas/mp40.jpg" width="1920" height="1164">
+					</section>
+                   <section>
+                    <img src="img/programas/edredon.jpg" width="1920" height="1164">
+					</section>
+					
+				   <section>
+						<h3> Pintado en Alta</h3>
+						<p class="fragment">
+							El pintado en alta es el que se realiza directamente sobre los modelos 3D de alta. Los programas más habituales son:
+                            <br><br>
+                           <li class="fragment"><em>Mari</em></li>
+                           <li class="fragment"><em>Zbrush</em></li>
+                           <li class="fragment"><em>MudBox</em></li>
+                           <li class="fragment"><em>BodyPaint (Cinema 4D)</em></li>
+                           	</p>
+						
+					</section>
+					<section>
+                    <img src="img/programas/mari.png" width="1920" height="1164">
+					</section>
+                     <section>
+						<h3> Retopología</h3>
+						<p class="fragment">
+							Por retopología se entiendo el proceso de convertir o rehacer un modelo de baja, partiendo de uno de alta. Los programas más habituales son:
+                            <br><br>
+                           <li class="fragment"><em>TopoGun</em></li>
+                           <li class="fragment"><em>3DMax</em></li>
+                           <li class="fragment"><em>Maya</em></li>
+                           	</p>
+						
+					</section>
+                    <section>
+                    <img src="img/programas/topogun.jpg" width="1920" height="1164">
+					</section>
+                     <section>
+						<h3> Mapeado UVs</h3>
+						<p class="fragment">
+							El mapeado de UVs es el proceso mediante el cual asignamos coordenadas en una superficie 2D a los vertices del objeto 3D, para poder pintar sus texturas de forma plana. Los programas más habituales son:
+                            <br><br>
+                           <li class="fragment"><em>UVLayout</em></li>
+                           <li class="fragment"><em>3DMax</em></li>
+                           <li class="fragment"><em>Maya</em></li>
+                           	</p>
+						
+					</section>
+                    <section>
+                    <img src="img/programas/uvlayout.jpg" width="1920" height="1164">
+					</section>
+                    <section>
+						<h3> Proyecciones</h3>
+						<p class="fragment">
+							Se entiende por proyectar, al proceso de convertir la información existente en un modelo 3D de alta, a una textura 2D que retenga su información tridimensional. El normal map es el resultado de este proceso. Los programas más habituales son:
+                            <br><br>
+                           <li class="fragment"><em>XNormal</em></li>
+                            <li class="fragment"><em>TopoGun</em></li>
+                           <li class="fragment"><em>3DMax</em></li>
+                           <li class="fragment"><em>Maya</em></li>
+                           	</p>
+						
+					</section>
+                    <section>
+                    <img src="img/programas/xnormal.jpg" width="1920" height="1164">
+					</section>
+                     <section>
+						<h3> Texturas de soporte</h3>
+						<p class="fragment">
+							Mediante el proceso de proyectado se pueden conseguir tambien, texturas de soporte que nos ayudan a potenciar ciertos aspectos de los modelos, como pueden ser los Ambient Occlusions, Cavity maps, etc. Existen herramientas que nos ayudan a conseguir estas texturas a partir del propio normal proyectado, facilitando el proceso. Los programas más habituales son:
+                            <br><br>
+                          
+                            <li class="fragment"><em>CrazyBump</em></li>
+                           <li class="fragment"><em>ShaderMap</em></li>
+						   <li class="fragment"><em>NDo2 y Ddo</em></li>
+                           
+                           	</p>
+						
+					</section>
+                    <section>
+                    <img src="img/programas/crazybump.jpg" width="1920" height="800">
+					</section>
+                    <section>
+						<h3> Texturización 2D</h3>
+						<p class="fragment">
+							Todos los procesos que se realizan directamente en 2D para la creación de texturas. Los programas más habituales son:
+                            <br><br>
+                          
+                            <li class="fragment"><em>Photoshop</em></li>
+                           <li class="fragment"><em>Painter</em></li>
+                           	<li class="fragment"><em>Gimp</em></li>
+                           
+                           	</p>
+						
+					</section>
+					<section>
+                    <img src="img/programas/photoshop.jpg" width="1920" height="1164">
+					</section>
+                    <section>
+						<h3> Creación de Shaders</h3>
+						<p class="fragment">
+							Asi como los programadores pueden crear sus shaders directamente por programación, es habitual que los artistas prefieran un entorno gráfico mas acorde a sus costumbres. Los motores más habituales estan preparados para ofrecer esas posibilidades:
+                            <br><br>
+                          
+                            <li class="fragment"><em>Unreal Editor 3</em></li>
+                           <li class="fragment"><em>Cry engine</em></li>
+                           	<li class="fragment"><em>Unity 3D (con muchas limitaciones)</em></li>
+                           
+                           	</p>
+						
+					</section>
+					
+					<section>
+                    <img src="img/programas/unreal.jpg" width="1920" height="1164">
+					</section>
+					
+					
+                     <section>
+						<h3> Animación</h3>
+						<p class="fragment">
+							Tanto en animación por key-frames como en captura de movimientos, las herramientas más comunes para trabajar con animación son:
+                            <br><br>
+                          
+                            <li class="fragment"><em>3DMax</em></li>
+                           <li class="fragment"><em>Maya</em></li>
+                           	<li class="fragment"><em>Motion Builder</em></li>
+                            <li class="fragment"><em>Mocap Tools</em></li>
+                           
+                           	</p>
+						
+					</section>
+                    
+                     <section>
+						<h3> Otras herramientas</h3>
+						<p class="fragment">
+							Si bien no son habituales, me gustaría hacer mencion de algunas herramientas que se usan en momentos determinados:
+                            <br><br>
+                          
+                            <li class="fragment"><em>Creacion de paisajes virtuales: Vue, Terragen, World Machine</em></li>
+                            <li class="fragment"><em>Creacion de arboles: SpeedTree</em></li>
+                           <li class="fragment"><em>Visual FXs: Cascade (Unreal), Particle illusions</em></li>
+                           	<li class="fragment"><em>Visualizacion de shaders: Marmoset Toolbag, Xoliul, 3pointShader </em></li>
+                           	<li class="fragment"><em>Software libre 3D: Blender</em></li>
+                           
+                           
+                           	</p>
+						
+					</section>
+					<section>
+                    <img src="img/programas/vue.jpg" width="1920" height="1164">
+					</section>
+					<section>
+                    <img src="img/programas/speedtree.jpg" width="1920" height="1164">
+					</section>
+					<section>
+                    <img src="img/programas/cascade.jpg" width="1920" height="1164">
+					</section>
+					<section>
+                    <img src="img/programas/marmoset.jpg" width="1920" height="1164">
+					</section>
+		</section>
+
+				<!-- ruegos y preguntas -->
+
+
+				<section>
+					<h1>Preguntas</h1>
+				</section>
+
+
+<!-- despedida -->
+				<section>
+					<h2>Grácias por vuestra atención</h2>
+					Miguel Ángel Carrillo
+				</section>
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+				width: 1200,
+				
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+					// { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
